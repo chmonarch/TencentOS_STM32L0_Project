@@ -1,0 +1,358 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 EXPORT           port_int_disable
+    2 00000000                 EXPORT           port_int_enable
+    3 00000000         
+    4 00000000                 EXPORT           port_cpsr_save
+    5 00000000                 EXPORT           port_cpsr_restore
+    6 00000000         
+    7 00000000                 EXPORT           port_sched_start
+    8 00000000                 EXPORT           port_context_switch
+    9 00000000                 EXPORT           port_irq_context_switch
+   10 00000000         
+   11 00000000                 EXPORT           PendSV_Handler
+   12 00000000         
+   13 00000000                 IMPORT           k_curr_task
+   14 00000000                 IMPORT           k_next_task
+   15 00000000         
+   16 00000000         
+   17 00000000 E000ED04 
+                       NVIC_INT_CTRL
+                               EQU              0xE000ED04  ; Interrupt control
+                                                             state register.
+   18 00000000 E000ED20 
+                       NVIC_SYSPRI14
+                               EQU              0xE000ED20  ; System priority r
+                                                            egister (priority 1
+                                                            4).
+   19 00000000 00FF0000 
+                       NVIC_PENDSV_PRI
+                               EQU              0x00FF0000  ; PendSV priority v
+                                                            alue (lowest).
+   20 00000000 10000000 
+                       NVIC_PENDSVSET
+                               EQU              0x10000000  ; Value to trigger 
+                                                            PendSV exception.
+   21 00000000         
+   22 00000000         
+   23 00000000                 AREA             |.text|, CODE, READONLY, ALIGN=
+2
+   24 00000000                 THUMB
+   25 00000000                 REQUIRE8
+   26 00000000                 PRESERVE8
+   27 00000000         
+   28 00000000                 GLOBAL           port_int_disable
+   29 00000000         port_int_disable
+   30 00000000 B672            CPSID            I
+   31 00000002 4770            BX               LR
+   32 00000004         
+   33 00000004         
+   34 00000004                 GLOBAL           port_int_enable
+   35 00000004         port_int_enable
+   36 00000004 B662            CPSIE            I
+   37 00000006 4770            BX               LR
+   38 00000008         
+   39 00000008         
+   40 00000008                 GLOBAL           port_cpsr_save
+   41 00000008         port_cpsr_save
+   42 00000008 F3EF 8010       MRS              R0, PRIMASK
+   43 0000000C B672            CPSID            I
+   44 0000000E 4770            BX               LR
+   45 00000010         
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   46 00000010         
+   47 00000010                 GLOBAL           port_cpsr_restore
+   48 00000010         port_cpsr_restore
+   49 00000010 F380 8810       MSR              PRIMASK, R0
+   50 00000014 4770            BX               LR
+   51 00000016         
+   52 00000016         
+   53 00000016                 GLOBAL           port_sched_start
+   54 00000016         port_sched_start
+   55 00000016 481B            LDR              R0, =NVIC_SYSPRI14
+   56 00000018 491B            LDR              R1, =NVIC_PENDSV_PRI
+   57 0000001A 6001            STR              R1, [R0]
+   58 0000001C         
+   59 0000001C 2000            MOVS             R0, #0
+   60 0000001E F380 8809       MSR              PSP, R0
+   61 00000022         
+   62 00000022 481A            LDR              R0, =NVIC_INT_CTRL
+   63 00000024 491A            LDR              R1, =NVIC_PENDSVSET
+   64 00000026 6001            STR              R1, [R0]
+   65 00000028         
+   66 00000028 B662            CPSIE            I
+   67 0000002A         
+   68 0000002A         __unreachable
+   69 0000002A E7FE            B                __unreachable
+   70 0000002C         
+   71 0000002C         
+   72 0000002C                 GLOBAL           port_context_switch
+   73 0000002C         port_context_switch
+   74 0000002C 4817            LDR              R0, =NVIC_INT_CTRL
+   75 0000002E 4918            LDR              R1, =NVIC_PENDSVSET
+   76 00000030 6001            STR              R1, [R0]
+   77 00000032 4770            BX               LR
+   78 00000034         
+   79 00000034         
+   80 00000034                 GLOBAL           port_irq_context_switch
+   81 00000034         port_irq_context_switch
+   82 00000034 4815            LDR              R0, =NVIC_INT_CTRL
+   83 00000036 4916            LDR              R1, =NVIC_PENDSVSET
+   84 00000038 6001            STR              R1, [R0]
+   85 0000003A 4770            BX               LR
+   86 0000003C         
+   87 0000003C         
+   88 0000003C                 GLOBAL           PendSV_Handler
+   89 0000003C         PendSV_Handler
+   90 0000003C B672            CPSID            I
+   91 0000003E F3EF 8009       MRS              R0, PSP
+   92 00000042 2800            CMP              R0, #0
+   93 00000044 D00A            BEQ              PendSVHandler_nosave
+   94 00000046         
+   95 00000046 3820            SUBS             R0, R0, #0x20
+   96 00000048 C0F0            STMIA            R0!, {R4 - R7}
+   97 0000004A 4644            MOV              R4, R8
+   98 0000004C 464D            MOV              R5, R9
+   99 0000004E 4656            MOV              R6, R10
+  100 00000050 465F            MOV              R7, R11
+  101 00000052 C0F0            STMIA            R0!, {R4-R7}
+  102 00000054 3820            SUBS             R0, R0, #0x20
+  103 00000056         
+  104 00000056 490F            LDR              R1, =k_curr_task
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+  105 00000058 6809            LDR              R1, [R1]
+  106 0000005A 6008            STR              R0, [R1]
+  107 0000005C         
+  108 0000005C         PendSVHandler_nosave
+  109 0000005C 480D            LDR              R0, =k_curr_task
+  110 0000005E 490E            LDR              R1, =k_next_task
+  111 00000060 680A            LDR              R2, [R1]
+  112 00000062 6002            STR              R2, [R0]
+  113 00000064         
+  114 00000064 6810            LDR              R0, [R2]
+  115 00000066         
+  116 00000066 C8F0            LDMIA            R0!, {R4 - R7}
+  117 00000068 C80C            LDMIA            R0!, {R2 - R3}
+  118 0000006A 4690            MOV              R8, R2
+  119 0000006C 4699            MOV              R9, R3
+  120 0000006E C80C            LDMIA            R0!, {R2 - R3}
+  121 00000070 4692            MOV              R10, R2
+  122 00000072 469B            MOV              R11, R3
+  123 00000074 F380 8809       MSR              PSP, R0
+  124 00000078         
+  125 00000078 4670            MOV              R0, R14
+  126 0000007A 2104            MOVS             R1, #0x04
+  127 0000007C 4308            ORRS             R0, R1
+  128 0000007E 4686            MOV              R14, R0
+  129 00000080         
+  130 00000080 B662            CPSIE            I
+  131 00000082         
+  132 00000082 4770            BX               LR
+  133 00000084         
+  134 00000084                 ALIGN
+  135 00000084         
+  136 00000084                 END
+              E000ED20 
+              00FF0000 
+              E000ED04 
+              10000000 
+              00000000 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
+work --depend=stm32l051c8t6\port_s.d -ostm32l051c8t6\port_s.o -I.\RTE\_STM32L05
+1C8T6 -ID:\Keil_v5\ARM\PACK\ARM\CMSIS\5.5.1\CMSIS\Core\Include -ID:\Keil_v5\ARM
+\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include --pred
+efine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 527" --predefine=
+"_RTE_ SETA 1" --predefine="STM32L051xx SETA 1" --list=port_s.lst ..\..\..\arch
+\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 23 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      None
+Comment: .text unused
+PendSVHandler_nosave 0000005C
+
+Symbol: PendSVHandler_nosave
+   Definitions
+      At line 108 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 93 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+Comment: PendSVHandler_nosave used once
+PendSV_Handler 0000003C
+
+Symbol: PendSV_Handler
+   Definitions
+      At line 89 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 11 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 88 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+__unreachable 0000002A
+
+Symbol: __unreachable
+   Definitions
+      At line 68 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 69 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+Comment: __unreachable used once
+port_context_switch 0000002C
+
+Symbol: port_context_switch
+   Definitions
+      At line 73 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 8 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 72 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+port_cpsr_restore 00000010
+
+Symbol: port_cpsr_restore
+   Definitions
+      At line 48 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 5 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 47 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+port_cpsr_save 00000008
+
+Symbol: port_cpsr_save
+   Definitions
+      At line 41 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 4 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 40 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+
+port_int_disable 00000000
+
+Symbol: port_int_disable
+   Definitions
+      At line 29 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 1 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 28 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+port_int_enable 00000004
+
+Symbol: port_int_enable
+   Definitions
+      At line 35 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 2 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 34 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+port_irq_context_switch 00000034
+
+Symbol: port_irq_context_switch
+   Definitions
+      At line 81 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 9 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 80 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+port_sched_start 00000016
+
+Symbol: port_sched_start
+   Definitions
+      At line 54 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 7 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 53 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+11 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+NVIC_INT_CTRL E000ED04
+
+Symbol: NVIC_INT_CTRL
+   Definitions
+      At line 17 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 62 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 74 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 82 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+NVIC_PENDSVSET 10000000
+
+Symbol: NVIC_PENDSVSET
+   Definitions
+      At line 20 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 63 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 75 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 83 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+NVIC_PENDSV_PRI 00FF0000
+
+Symbol: NVIC_PENDSV_PRI
+   Definitions
+      At line 19 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 56 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+Comment: NVIC_PENDSV_PRI used once
+NVIC_SYSPRI14 E000ED20
+
+Symbol: NVIC_SYSPRI14
+   Definitions
+      At line 18 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 55 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+Comment: NVIC_SYSPRI14 used once
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+k_curr_task 00000000
+
+Symbol: k_curr_task
+   Definitions
+      At line 13 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 104 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+      At line 109 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+
+k_next_task 00000000
+
+Symbol: k_next_task
+   Definitions
+      At line 14 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+   Uses
+      At line 110 in file ..\..\..\arch\arm\arm-v7m\cortex-m0+\armcc\port_s.S
+Comment: k_next_task used once
+2 symbols
+353 symbols in table

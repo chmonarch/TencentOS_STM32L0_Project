@@ -1,0 +1,2091 @@
+Component: ARM Compiler 5.06 update 6 (build 750) Tool: armlink [4d35ed]
+
+==============================================================================
+
+Section Cross References
+
+    startup_stm32l051xx.o(RESET) refers to startup_stm32l051xx.o(STACK) for __initial_sp
+    startup_stm32l051xx.o(RESET) refers to startup_stm32l051xx.o(.text) for Reset_Handler
+    startup_stm32l051xx.o(RESET) refers to stm32l0xx_it.o(i.NMI_Handler) for NMI_Handler
+    startup_stm32l051xx.o(RESET) refers to stm32l0xx_it.o(i.HardFault_Handler) for HardFault_Handler
+    startup_stm32l051xx.o(RESET) refers to stm32l0xx_it.o(i.SVC_Handler) for SVC_Handler
+    startup_stm32l051xx.o(RESET) refers to port_s.o(.text) for PendSV_Handler
+    startup_stm32l051xx.o(RESET) refers to stm32l0xx_it.o(i.SysTick_Handler) for SysTick_Handler
+    startup_stm32l051xx.o(.text) refers to system_stm32l0xx.o(i.SystemInit) for SystemInit
+    startup_stm32l051xx.o(.text) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    main.o(i.SystemClock_Config) refers to memseta.o(.text) for __aeabi_memclr4
+    main.o(i.SystemClock_Config) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_OscConfig) for HAL_RCC_OscConfig
+    main.o(i.SystemClock_Config) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_ClockConfig) for HAL_RCC_ClockConfig
+    main.o(i.SystemClock_Config) refers to stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_PeriphCLKConfig) for HAL_RCCEx_PeriphCLKConfig
+    main.o(i.entry_task_demo) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    main.o(i.entry_task_demo) refers to printf5.o(i.__0printf$5) for __2printf
+    main.o(i.entry_task_demo) refers to tos_time.o(i.tos_tick2millisec) for tos_tick2millisec
+    main.o(i.entry_task_demo) refers to tos_time.o(i.tos_systick_get) for tos_systick_get
+    main.o(i.main) refers to stm32l0xx_hal.o(i.HAL_Init) for HAL_Init
+    main.o(i.main) refers to main.o(i.SystemClock_Config) for SystemClock_Config
+    main.o(i.main) refers to gpio.o(i.MX_GPIO_Init) for MX_GPIO_Init
+    main.o(i.main) refers to usart.o(i.MX_USART1_UART_Init) for MX_USART1_UART_Init
+    main.o(i.main) refers to tos_sys.o(i.tos_knl_init) for tos_knl_init
+    main.o(i.main) refers to tos_task.o(i.tos_task_create) for tos_task_create
+    main.o(i.main) refers to tos_sys.o(i.tos_knl_start) for tos_knl_start
+    main.o(i.main) refers to main.o(.bss) for .bss
+    main.o(i.main) refers to main.o(i.entry_task_demo) for entry_task_demo
+    gpio.o(i.MX_GPIO_Init) refers to memseta.o(.text) for __aeabi_memclr4
+    gpio.o(i.MX_GPIO_Init) refers to stm32l0xx_hal_gpio.o(i.HAL_GPIO_WritePin) for HAL_GPIO_WritePin
+    gpio.o(i.MX_GPIO_Init) refers to stm32l0xx_hal_gpio.o(i.HAL_GPIO_Init) for HAL_GPIO_Init
+    usart.o(i.HAL_UART_MspDeInit) refers to stm32l0xx_hal_gpio.o(i.HAL_GPIO_DeInit) for HAL_GPIO_DeInit
+    usart.o(i.HAL_UART_MspInit) refers to memseta.o(.text) for __aeabi_memclr4
+    usart.o(i.HAL_UART_MspInit) refers to stm32l0xx_hal_gpio.o(i.HAL_GPIO_Init) for HAL_GPIO_Init
+    usart.o(i.MX_USART1_UART_Init) refers to stm32l0xx_hal_uart.o(i.HAL_UART_Init) for HAL_UART_Init
+    usart.o(i.MX_USART1_UART_Init) refers to main.o(i.Error_Handler) for Error_Handler
+    usart.o(i.MX_USART1_UART_Init) refers to usart.o(.bss) for .bss
+    usart.o(i.fputc) refers to stm32l0xx_hal_uart.o(i.HAL_UART_Transmit) for HAL_UART_Transmit
+    usart.o(i.fputc) refers to usart.o(.bss) for .bss
+    stm32l0xx_it.o(i.SysTick_Handler) refers to stm32l0xx_hal.o(i.HAL_IncTick) for HAL_IncTick
+    stm32l0xx_it.o(i.SysTick_Handler) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    stm32l0xx_it.o(i.SysTick_Handler) refers to tos_sys.o(i.tos_knl_irq_enter) for tos_knl_irq_enter
+    stm32l0xx_it.o(i.SysTick_Handler) refers to tos_tick.o(i.tos_tick_handler) for tos_tick_handler
+    stm32l0xx_it.o(i.SysTick_Handler) refers to tos_sys.o(i.tos_knl_irq_leave) for tos_knl_irq_leave
+    stm32l0xx_hal_uart.o(i.HAL_HalfDuplex_Init) refers to usart.o(i.HAL_UART_MspInit) for HAL_UART_MspInit
+    stm32l0xx_hal_uart.o(i.HAL_HalfDuplex_Init) refers to stm32l0xx_hal_uart.o(i.UART_SetConfig) for UART_SetConfig
+    stm32l0xx_hal_uart.o(i.HAL_HalfDuplex_Init) refers to stm32l0xx_hal_uart.o(i.UART_AdvFeatureConfig) for UART_AdvFeatureConfig
+    stm32l0xx_hal_uart.o(i.HAL_HalfDuplex_Init) refers to stm32l0xx_hal_uart.o(i.UART_CheckIdleState) for UART_CheckIdleState
+    stm32l0xx_hal_uart.o(i.HAL_LIN_Init) refers to usart.o(i.HAL_UART_MspInit) for HAL_UART_MspInit
+    stm32l0xx_hal_uart.o(i.HAL_LIN_Init) refers to stm32l0xx_hal_uart.o(i.UART_SetConfig) for UART_SetConfig
+    stm32l0xx_hal_uart.o(i.HAL_LIN_Init) refers to stm32l0xx_hal_uart.o(i.UART_AdvFeatureConfig) for UART_AdvFeatureConfig
+    stm32l0xx_hal_uart.o(i.HAL_LIN_Init) refers to stm32l0xx_hal_uart.o(i.UART_CheckIdleState) for UART_CheckIdleState
+    stm32l0xx_hal_uart.o(i.HAL_MultiProcessor_DisableMuteMode) refers to stm32l0xx_hal_uart.o(i.UART_CheckIdleState) for UART_CheckIdleState
+    stm32l0xx_hal_uart.o(i.HAL_MultiProcessor_EnableMuteMode) refers to stm32l0xx_hal_uart.o(i.UART_CheckIdleState) for UART_CheckIdleState
+    stm32l0xx_hal_uart.o(i.HAL_MultiProcessor_Init) refers to usart.o(i.HAL_UART_MspInit) for HAL_UART_MspInit
+    stm32l0xx_hal_uart.o(i.HAL_MultiProcessor_Init) refers to stm32l0xx_hal_uart.o(i.UART_SetConfig) for UART_SetConfig
+    stm32l0xx_hal_uart.o(i.HAL_MultiProcessor_Init) refers to stm32l0xx_hal_uart.o(i.UART_AdvFeatureConfig) for UART_AdvFeatureConfig
+    stm32l0xx_hal_uart.o(i.HAL_MultiProcessor_Init) refers to stm32l0xx_hal_uart.o(i.UART_CheckIdleState) for UART_CheckIdleState
+    stm32l0xx_hal_uart.o(i.HAL_UART_Abort) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort) for HAL_DMA_Abort
+    stm32l0xx_hal_uart.o(i.HAL_UART_Abort) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_GetError) for HAL_DMA_GetError
+    stm32l0xx_hal_uart.o(i.HAL_UART_AbortReceive) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort) for HAL_DMA_Abort
+    stm32l0xx_hal_uart.o(i.HAL_UART_AbortReceive) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_GetError) for HAL_DMA_GetError
+    stm32l0xx_hal_uart.o(i.HAL_UART_AbortReceive_IT) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort_IT) for HAL_DMA_Abort_IT
+    stm32l0xx_hal_uart.o(i.HAL_UART_AbortReceive_IT) refers to stm32l0xx_hal_uart.o(i.HAL_UART_AbortReceiveCpltCallback) for HAL_UART_AbortReceiveCpltCallback
+    stm32l0xx_hal_uart.o(i.HAL_UART_AbortReceive_IT) refers to stm32l0xx_hal_uart.o(i.UART_DMARxOnlyAbortCallback) for UART_DMARxOnlyAbortCallback
+    stm32l0xx_hal_uart.o(i.HAL_UART_AbortTransmit) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort) for HAL_DMA_Abort
+    stm32l0xx_hal_uart.o(i.HAL_UART_AbortTransmit) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_GetError) for HAL_DMA_GetError
+    stm32l0xx_hal_uart.o(i.HAL_UART_AbortTransmit_IT) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort_IT) for HAL_DMA_Abort_IT
+    stm32l0xx_hal_uart.o(i.HAL_UART_AbortTransmit_IT) refers to stm32l0xx_hal_uart.o(i.HAL_UART_AbortTransmitCpltCallback) for HAL_UART_AbortTransmitCpltCallback
+    stm32l0xx_hal_uart.o(i.HAL_UART_AbortTransmit_IT) refers to stm32l0xx_hal_uart.o(i.UART_DMATxOnlyAbortCallback) for UART_DMATxOnlyAbortCallback
+    stm32l0xx_hal_uart.o(i.HAL_UART_Abort_IT) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort_IT) for HAL_DMA_Abort_IT
+    stm32l0xx_hal_uart.o(i.HAL_UART_Abort_IT) refers to stm32l0xx_hal_uart.o(i.HAL_UART_AbortCpltCallback) for HAL_UART_AbortCpltCallback
+    stm32l0xx_hal_uart.o(i.HAL_UART_Abort_IT) refers to stm32l0xx_hal_uart.o(i.UART_DMATxAbortCallback) for UART_DMATxAbortCallback
+    stm32l0xx_hal_uart.o(i.HAL_UART_Abort_IT) refers to stm32l0xx_hal_uart.o(i.UART_DMARxAbortCallback) for UART_DMARxAbortCallback
+    stm32l0xx_hal_uart.o(i.HAL_UART_DMAStop) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort) for HAL_DMA_Abort
+    stm32l0xx_hal_uart.o(i.HAL_UART_DMAStop) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_GetError) for HAL_DMA_GetError
+    stm32l0xx_hal_uart.o(i.HAL_UART_DMAStop) refers to stm32l0xx_hal_uart.o(i.UART_EndTxTransfer) for UART_EndTxTransfer
+    stm32l0xx_hal_uart.o(i.HAL_UART_DMAStop) refers to stm32l0xx_hal_uart.o(i.UART_EndRxTransfer) for UART_EndRxTransfer
+    stm32l0xx_hal_uart.o(i.HAL_UART_DeInit) refers to usart.o(i.HAL_UART_MspDeInit) for HAL_UART_MspDeInit
+    stm32l0xx_hal_uart.o(i.HAL_UART_IRQHandler) refers to stm32l0xx_hal_uart.o(i.UART_EndRxTransfer) for UART_EndRxTransfer
+    stm32l0xx_hal_uart.o(i.HAL_UART_IRQHandler) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort_IT) for HAL_DMA_Abort_IT
+    stm32l0xx_hal_uart.o(i.HAL_UART_IRQHandler) refers to stm32l0xx_hal_uart.o(i.HAL_UART_ErrorCallback) for HAL_UART_ErrorCallback
+    stm32l0xx_hal_uart.o(i.HAL_UART_IRQHandler) refers to stm32l0xx_hal_uart_ex.o(i.HAL_UARTEx_WakeupCallback) for HAL_UARTEx_WakeupCallback
+    stm32l0xx_hal_uart.o(i.HAL_UART_IRQHandler) refers to stm32l0xx_hal_uart.o(i.HAL_UART_TxCpltCallback) for HAL_UART_TxCpltCallback
+    stm32l0xx_hal_uart.o(i.HAL_UART_IRQHandler) refers to stm32l0xx_hal_uart.o(i.UART_DMAAbortOnError) for UART_DMAAbortOnError
+    stm32l0xx_hal_uart.o(i.HAL_UART_Init) refers to usart.o(i.HAL_UART_MspInit) for HAL_UART_MspInit
+    stm32l0xx_hal_uart.o(i.HAL_UART_Init) refers to stm32l0xx_hal_uart.o(i.UART_SetConfig) for UART_SetConfig
+    stm32l0xx_hal_uart.o(i.HAL_UART_Init) refers to stm32l0xx_hal_uart.o(i.UART_AdvFeatureConfig) for UART_AdvFeatureConfig
+    stm32l0xx_hal_uart.o(i.HAL_UART_Init) refers to stm32l0xx_hal_uart.o(i.UART_CheckIdleState) for UART_CheckIdleState
+    stm32l0xx_hal_uart.o(i.HAL_UART_Receive) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_uart.o(i.HAL_UART_Receive) refers to stm32l0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout) for UART_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_uart.o(i.HAL_UART_Receive_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_uart.o(i.HAL_UART_Receive_DMA) refers to stm32l0xx_hal_uart.o(i.UART_DMAReceiveCplt) for UART_DMAReceiveCplt
+    stm32l0xx_hal_uart.o(i.HAL_UART_Receive_DMA) refers to stm32l0xx_hal_uart.o(i.UART_DMARxHalfCplt) for UART_DMARxHalfCplt
+    stm32l0xx_hal_uart.o(i.HAL_UART_Receive_DMA) refers to stm32l0xx_hal_uart.o(i.UART_DMAError) for UART_DMAError
+    stm32l0xx_hal_uart.o(i.HAL_UART_Receive_IT) refers to stm32l0xx_hal_uart.o(i.UART_RxISR_8BIT) for UART_RxISR_8BIT
+    stm32l0xx_hal_uart.o(i.HAL_UART_Receive_IT) refers to stm32l0xx_hal_uart.o(i.UART_RxISR_16BIT) for UART_RxISR_16BIT
+    stm32l0xx_hal_uart.o(i.HAL_UART_Transmit) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_uart.o(i.HAL_UART_Transmit) refers to stm32l0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout) for UART_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_uart.o(i.HAL_UART_Transmit_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_uart.o(i.HAL_UART_Transmit_DMA) refers to stm32l0xx_hal_uart.o(i.UART_DMATransmitCplt) for UART_DMATransmitCplt
+    stm32l0xx_hal_uart.o(i.HAL_UART_Transmit_DMA) refers to stm32l0xx_hal_uart.o(i.UART_DMATxHalfCplt) for UART_DMATxHalfCplt
+    stm32l0xx_hal_uart.o(i.HAL_UART_Transmit_DMA) refers to stm32l0xx_hal_uart.o(i.UART_DMAError) for UART_DMAError
+    stm32l0xx_hal_uart.o(i.HAL_UART_Transmit_IT) refers to stm32l0xx_hal_uart.o(i.UART_TxISR_8BIT) for UART_TxISR_8BIT
+    stm32l0xx_hal_uart.o(i.HAL_UART_Transmit_IT) refers to stm32l0xx_hal_uart.o(i.UART_TxISR_16BIT) for UART_TxISR_16BIT
+    stm32l0xx_hal_uart.o(i.UART_CheckIdleState) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_uart.o(i.UART_CheckIdleState) refers to stm32l0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout) for UART_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_uart.o(i.UART_DMAAbortOnError) refers to stm32l0xx_hal_uart.o(i.HAL_UART_ErrorCallback) for HAL_UART_ErrorCallback
+    stm32l0xx_hal_uart.o(i.UART_DMAError) refers to stm32l0xx_hal_uart.o(i.UART_EndTxTransfer) for UART_EndTxTransfer
+    stm32l0xx_hal_uart.o(i.UART_DMAError) refers to stm32l0xx_hal_uart.o(i.UART_EndRxTransfer) for UART_EndRxTransfer
+    stm32l0xx_hal_uart.o(i.UART_DMAError) refers to stm32l0xx_hal_uart.o(i.HAL_UART_ErrorCallback) for HAL_UART_ErrorCallback
+    stm32l0xx_hal_uart.o(i.UART_DMAReceiveCplt) refers to stm32l0xx_hal_uart.o(i.HAL_UART_RxCpltCallback) for HAL_UART_RxCpltCallback
+    stm32l0xx_hal_uart.o(i.UART_DMARxAbortCallback) refers to stm32l0xx_hal_uart.o(i.HAL_UART_AbortCpltCallback) for HAL_UART_AbortCpltCallback
+    stm32l0xx_hal_uart.o(i.UART_DMARxHalfCplt) refers to stm32l0xx_hal_uart.o(i.HAL_UART_RxHalfCpltCallback) for HAL_UART_RxHalfCpltCallback
+    stm32l0xx_hal_uart.o(i.UART_DMARxOnlyAbortCallback) refers to stm32l0xx_hal_uart.o(i.HAL_UART_AbortReceiveCpltCallback) for HAL_UART_AbortReceiveCpltCallback
+    stm32l0xx_hal_uart.o(i.UART_DMATransmitCplt) refers to stm32l0xx_hal_uart.o(i.HAL_UART_TxCpltCallback) for HAL_UART_TxCpltCallback
+    stm32l0xx_hal_uart.o(i.UART_DMATxAbortCallback) refers to stm32l0xx_hal_uart.o(i.HAL_UART_AbortCpltCallback) for HAL_UART_AbortCpltCallback
+    stm32l0xx_hal_uart.o(i.UART_DMATxHalfCplt) refers to stm32l0xx_hal_uart.o(i.HAL_UART_TxHalfCpltCallback) for HAL_UART_TxHalfCpltCallback
+    stm32l0xx_hal_uart.o(i.UART_DMATxOnlyAbortCallback) refers to stm32l0xx_hal_uart.o(i.HAL_UART_AbortTransmitCpltCallback) for HAL_UART_AbortTransmitCpltCallback
+    stm32l0xx_hal_uart.o(i.UART_RxISR_16BIT) refers to stm32l0xx_hal_uart.o(i.HAL_UART_RxCpltCallback) for HAL_UART_RxCpltCallback
+    stm32l0xx_hal_uart.o(i.UART_RxISR_8BIT) refers to stm32l0xx_hal_uart.o(i.HAL_UART_RxCpltCallback) for HAL_UART_RxCpltCallback
+    stm32l0xx_hal_uart.o(i.UART_SetConfig) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_GetPCLK1Freq) for HAL_RCC_GetPCLK1Freq
+    stm32l0xx_hal_uart.o(i.UART_SetConfig) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq) for HAL_RCC_GetSysClockFreq
+    stm32l0xx_hal_uart.o(i.UART_SetConfig) refers to uldiv.o(.text) for __aeabi_uldivmod
+    stm32l0xx_hal_uart.o(i.UART_SetConfig) refers to stm32l0xx_hal_uart.o(i.__ARM_common_switch8) for __ARM_common_switch8
+    stm32l0xx_hal_uart.o(i.UART_SetConfig) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_GetPCLK2Freq) for HAL_RCC_GetPCLK2Freq
+    stm32l0xx_hal_uart.o(i.UART_SetConfig) refers to uidiv.o(.text) for __aeabi_uidivmod
+    stm32l0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_uart_ex.o(i.HAL_MultiProcessorEx_AddressLength_Set) refers to stm32l0xx_hal_uart.o(i.UART_CheckIdleState) for UART_CheckIdleState
+    stm32l0xx_hal_uart_ex.o(i.HAL_RS485Ex_Init) refers to usart.o(i.HAL_UART_MspInit) for HAL_UART_MspInit
+    stm32l0xx_hal_uart_ex.o(i.HAL_RS485Ex_Init) refers to stm32l0xx_hal_uart.o(i.UART_SetConfig) for UART_SetConfig
+    stm32l0xx_hal_uart_ex.o(i.HAL_RS485Ex_Init) refers to stm32l0xx_hal_uart.o(i.UART_AdvFeatureConfig) for UART_AdvFeatureConfig
+    stm32l0xx_hal_uart_ex.o(i.HAL_RS485Ex_Init) refers to stm32l0xx_hal_uart.o(i.UART_CheckIdleState) for UART_CheckIdleState
+    stm32l0xx_hal_uart_ex.o(i.HAL_UARTEx_StopModeWakeUpSourceConfig) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_uart_ex.o(i.HAL_UARTEx_StopModeWakeUpSourceConfig) refers to stm32l0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout) for UART_WaitOnFlagUntilTimeout
+    stm32l0xx_hal.o(i.HAL_DeInit) refers to stm32l0xx_hal.o(i.HAL_MspDeInit) for HAL_MspDeInit
+    stm32l0xx_hal.o(i.HAL_Delay) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal.o(i.HAL_GetTick) refers to stm32l0xx_hal.o(.data) for .data
+    stm32l0xx_hal.o(i.HAL_IncTick) refers to stm32l0xx_hal.o(.data) for .data
+    stm32l0xx_hal.o(i.HAL_Init) refers to stm32l0xx_hal.o(i.HAL_InitTick) for HAL_InitTick
+    stm32l0xx_hal.o(i.HAL_Init) refers to stm32l0xx_hal_msp.o(i.HAL_MspInit) for HAL_MspInit
+    stm32l0xx_hal.o(i.HAL_InitTick) refers to uidiv.o(.text) for __aeabi_uidivmod
+    stm32l0xx_hal.o(i.HAL_InitTick) refers to stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_Config) for HAL_SYSTICK_Config
+    stm32l0xx_hal.o(i.HAL_InitTick) refers to stm32l0xx_hal_cortex.o(i.HAL_NVIC_SetPriority) for HAL_NVIC_SetPriority
+    stm32l0xx_hal.o(i.HAL_InitTick) refers to system_stm32l0xx.o(.data) for SystemCoreClock
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_DeInit) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_MspDeInit) for HAL_I2C_MspDeInit
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_DisableListen_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_ER_IRQHandler) refers to stm32l0xx_hal_i2c.o(i.I2C_ITError) for I2C_ITError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_EnableListen_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_EnableListen_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) for I2C_Slave_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Init) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_MspInit) for HAL_I2C_MspInit
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_IsDeviceReady) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_IsDeviceReady) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout) for I2C_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Abort_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Abort_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Abort_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout) for I2C_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnRXNEFlagUntilTimeout) for I2C_WaitOnRXNEFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnSTOPFlagUntilTimeout) for I2C_WaitOnSTOPFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) for I2C_Master_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAMasterReceiveCplt) for I2C_DMAMasterReceiveCplt
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAError) for I2C_DMAError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) for I2C_Master_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) for I2C_Master_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_ConvertOtherXferOptions) for I2C_ConvertOtherXferOptions
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) for I2C_Master_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAMasterReceiveCplt) for I2C_DMAMasterReceiveCplt
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAError) for I2C_DMAError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) for I2C_Master_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_ConvertOtherXferOptions) for I2C_ConvertOtherXferOptions
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) for I2C_Master_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_ConvertOtherXferOptions) for I2C_ConvertOtherXferOptions
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) for I2C_Master_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAMasterTransmitCplt) for I2C_DMAMasterTransmitCplt
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAError) for I2C_DMAError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) for I2C_Master_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_ConvertOtherXferOptions) for I2C_ConvertOtherXferOptions
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) for I2C_Master_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout) for I2C_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnTXISFlagUntilTimeout) for I2C_WaitOnTXISFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnSTOPFlagUntilTimeout) for I2C_WaitOnSTOPFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) for I2C_Master_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAMasterTransmitCplt) for I2C_DMAMasterTransmitCplt
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAError) for I2C_DMAError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) for I2C_Master_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) for I2C_Master_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout) for I2C_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read) refers to stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryRead) for I2C_RequestMemoryRead
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnSTOPFlagUntilTimeout) for I2C_WaitOnSTOPFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_DMA) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryRead) for I2C_RequestMemoryRead
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) for I2C_Master_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAMasterReceiveCplt) for I2C_DMAMasterReceiveCplt
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAError) for I2C_DMAError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_IT) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryRead) for I2C_RequestMemoryRead
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) for I2C_Master_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout) for I2C_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write) refers to stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryWrite) for I2C_RequestMemoryWrite
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnTXISFlagUntilTimeout) for I2C_WaitOnTXISFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnSTOPFlagUntilTimeout) for I2C_WaitOnSTOPFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_DMA) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryWrite) for I2C_RequestMemoryWrite
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) for I2C_Master_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAMasterTransmitCplt) for I2C_DMAMasterTransmitCplt
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAError) for I2C_DMAError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_IT) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryWrite) for I2C_RequestMemoryWrite
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) for I2C_Master_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout) for I2C_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnRXNEFlagUntilTimeout) for I2C_WaitOnRXNEFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnSTOPFlagUntilTimeout) for I2C_WaitOnSTOPFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) for I2C_Slave_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMASlaveReceiveCplt) for I2C_DMASlaveReceiveCplt
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAError) for I2C_DMAError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) for I2C_Slave_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort_IT) for HAL_DMA_Abort_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAAbort) for I2C_DMAAbort
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) for I2C_Slave_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMASlaveReceiveCplt) for I2C_DMASlaveReceiveCplt
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAError) for I2C_DMAError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_IT) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort_IT) for HAL_DMA_Abort_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAAbort) for I2C_DMAAbort
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) for I2C_Slave_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort_IT) for HAL_DMA_Abort_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAAbort) for I2C_DMAAbort
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) for I2C_Slave_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMASlaveTransmitCplt) for I2C_DMASlaveTransmitCplt
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAError) for I2C_DMAError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_IT) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort_IT) for HAL_DMA_Abort_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAAbort) for I2C_DMAAbort
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) for I2C_Slave_ISR_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout) for I2C_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnTXISFlagUntilTimeout) for I2C_WaitOnTXISFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnSTOPFlagUntilTimeout) for I2C_WaitOnSTOPFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit_DMA) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) for I2C_Slave_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMASlaveTransmitCplt) for I2C_DMASlaveTransmitCplt
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAError) for I2C_DMAError
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) for I2C_Slave_ISR_IT
+    stm32l0xx_hal_i2c.o(i.I2C_DMAAbort) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_ErrorCallback) for HAL_I2C_ErrorCallback
+    stm32l0xx_hal_i2c.o(i.I2C_DMAAbort) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_AbortCpltCallback) for HAL_I2C_AbortCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_DMAError) refers to stm32l0xx_hal_i2c.o(i.I2C_ITError) for I2C_ITError
+    stm32l0xx_hal_i2c.o(i.I2C_DMAMasterReceiveCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.I2C_DMAMasterReceiveCplt) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.I2C_DMAMasterReceiveCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_ITError) for I2C_ITError
+    stm32l0xx_hal_i2c.o(i.I2C_DMAMasterTransmitCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.I2C_DMAMasterTransmitCplt) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) for HAL_DMA_Start_IT
+    stm32l0xx_hal_i2c.o(i.I2C_DMAMasterTransmitCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_ITError) for I2C_ITError
+    stm32l0xx_hal_i2c.o(i.I2C_DMASlaveReceiveCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_ITSlaveSeqCplt) for I2C_ITSlaveSeqCplt
+    stm32l0xx_hal_i2c.o(i.I2C_DMASlaveTransmitCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_ITSlaveSeqCplt) for I2C_ITSlaveSeqCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) refers to stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) for I2C_Master_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) for I2C_Slave_ISR_DMA
+    stm32l0xx_hal_i2c.o(i.I2C_ITAddrCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_AddrCallback) for HAL_I2C_AddrCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITAddrCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.I2C_ITError) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.I2C_ITError) refers to stm32l0xx_hal_dma.o(i.HAL_DMA_Abort_IT) for HAL_DMA_Abort_IT
+    stm32l0xx_hal_i2c.o(i.I2C_ITError) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_ErrorCallback) for HAL_I2C_ErrorCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITError) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_AbortCpltCallback) for HAL_I2C_AbortCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITError) refers to stm32l0xx_hal_i2c.o(i.I2C_DMAAbort) for I2C_DMAAbort
+    stm32l0xx_hal_i2c.o(i.I2C_ITError) refers to stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) for I2C_Slave_ISR_IT
+    stm32l0xx_hal_i2c.o(i.I2C_ITListenCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.I2C_ITListenCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_ListenCpltCallback) for HAL_I2C_ListenCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITMasterCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_Flush_TXDR) for I2C_Flush_TXDR
+    stm32l0xx_hal_i2c.o(i.I2C_ITMasterCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.I2C_ITMasterCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_ITError) for I2C_ITError
+    stm32l0xx_hal_i2c.o(i.I2C_ITMasterCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_MasterRxCpltCallback) for HAL_I2C_MasterRxCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITMasterCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_MasterTxCpltCallback) for HAL_I2C_MasterTxCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITMasterCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_MemTxCpltCallback) for HAL_I2C_MemTxCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITMasterCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_MemRxCpltCallback) for HAL_I2C_MemRxCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITMasterSeqCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.I2C_ITMasterSeqCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_MasterRxCpltCallback) for HAL_I2C_MasterRxCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITMasterSeqCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_MasterTxCpltCallback) for HAL_I2C_MasterTxCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_Flush_TXDR) for I2C_Flush_TXDR
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_ITError) for I2C_ITError
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_ITListenCplt) for I2C_ITListenCplt
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_ITSlaveSeqCplt) for I2C_ITSlaveSeqCplt
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_ListenCpltCallback) for HAL_I2C_ListenCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_SlaveTxCpltCallback) for HAL_I2C_SlaveTxCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_SlaveRxCpltCallback) for HAL_I2C_SlaveRxCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveSeqCplt) refers to stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ) for I2C_Disable_IRQ
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveSeqCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_SlaveRxCpltCallback) for HAL_I2C_SlaveRxCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_ITSlaveSeqCplt) refers to stm32l0xx_hal_i2c.o(i.HAL_I2C_SlaveTxCpltCallback) for HAL_I2C_SlaveTxCpltCallback
+    stm32l0xx_hal_i2c.o(i.I2C_IsAcknowledgeFailed) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.I2C_IsAcknowledgeFailed) refers to stm32l0xx_hal_i2c.o(i.I2C_Flush_TXDR) for I2C_Flush_TXDR
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ) for I2C_Enable_IRQ
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Flush_TXDR) for I2C_Flush_TXDR
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_ITError) for I2C_ITError
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_ITMasterSeqCplt) for I2C_ITMasterSeqCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_ITMasterCplt) for I2C_ITMasterCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Flush_TXDR) for I2C_Flush_TXDR
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_ITError) for I2C_ITError
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_ITMasterCplt) for I2C_ITMasterCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_ITMasterSeqCplt) for I2C_ITMasterSeqCplt
+    stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryRead) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryRead) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnTXISFlagUntilTimeout) for I2C_WaitOnTXISFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryRead) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout) for I2C_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryWrite) refers to stm32l0xx_hal_i2c.o(i.I2C_TransferConfig) for I2C_TransferConfig
+    stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryWrite) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnTXISFlagUntilTimeout) for I2C_WaitOnTXISFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryWrite) refers to stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout) for I2C_WaitOnFlagUntilTimeout
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_ITListenCplt) for I2C_ITListenCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_Flush_TXDR) for I2C_Flush_TXDR
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_ITSlaveSeqCplt) for I2C_ITSlaveSeqCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_ITError) for I2C_ITError
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_ITAddrCplt) for I2C_ITAddrCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA) refers to stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt) for I2C_ITSlaveCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_ITError) for I2C_ITError
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_ITListenCplt) for I2C_ITListenCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_Flush_TXDR) for I2C_Flush_TXDR
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_ITAddrCplt) for I2C_ITAddrCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_ITSlaveSeqCplt) for I2C_ITSlaveSeqCplt
+    stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT) refers to stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt) for I2C_ITSlaveCplt
+    stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.I2C_WaitOnRXNEFlagUntilTimeout) refers to stm32l0xx_hal_i2c.o(i.I2C_IsAcknowledgeFailed) for I2C_IsAcknowledgeFailed
+    stm32l0xx_hal_i2c.o(i.I2C_WaitOnRXNEFlagUntilTimeout) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.I2C_WaitOnSTOPFlagUntilTimeout) refers to stm32l0xx_hal_i2c.o(i.I2C_IsAcknowledgeFailed) for I2C_IsAcknowledgeFailed
+    stm32l0xx_hal_i2c.o(i.I2C_WaitOnSTOPFlagUntilTimeout) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_i2c.o(i.I2C_WaitOnTXISFlagUntilTimeout) refers to stm32l0xx_hal_i2c.o(i.I2C_IsAcknowledgeFailed) for I2C_IsAcknowledgeFailed
+    stm32l0xx_hal_i2c.o(i.I2C_WaitOnTXISFlagUntilTimeout) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_ClockConfig) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_ClockConfig) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq) for HAL_RCC_GetSysClockFreq
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_ClockConfig) refers to stm32l0xx_hal.o(i.HAL_InitTick) for HAL_InitTick
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_ClockConfig) refers to system_stm32l0xx.o(.constdata) for AHBPrescTable
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_ClockConfig) refers to system_stm32l0xx.o(.data) for SystemCoreClock
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_DeInit) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_DeInit) refers to stm32l0xx_hal.o(i.HAL_InitTick) for HAL_InitTick
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_DeInit) refers to system_stm32l0xx.o(.data) for SystemCoreClock
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_GetHCLKFreq) refers to system_stm32l0xx.o(.data) for SystemCoreClock
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_GetPCLK1Freq) refers to system_stm32l0xx.o(.data) for SystemCoreClock
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_GetPCLK1Freq) refers to system_stm32l0xx.o(.constdata) for APBPrescTable
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_GetPCLK2Freq) refers to system_stm32l0xx.o(.data) for SystemCoreClock
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_GetPCLK2Freq) refers to system_stm32l0xx.o(.constdata) for APBPrescTable
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq) refers to uidiv.o(.text) for __aeabi_uidivmod
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq) refers to system_stm32l0xx.o(.constdata) for PLLMulTable
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_MCOConfig) refers to memseta.o(.text) for __aeabi_memclr4
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_MCOConfig) refers to stm32l0xx_hal_gpio.o(i.HAL_GPIO_Init) for HAL_GPIO_Init
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_NMI_IRQHandler) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_CSSCallback) for HAL_RCC_CSSCallback
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_OscConfig) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_OscConfig) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq) for HAL_RCC_GetSysClockFreq
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_OscConfig) refers to stm32l0xx_hal.o(i.HAL_InitTick) for HAL_InitTick
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_OscConfig) refers to system_stm32l0xx.o(.constdata) for AHBPrescTable
+    stm32l0xx_hal_rcc.o(i.HAL_RCC_OscConfig) refers to system_stm32l0xx.o(.data) for SystemCoreClock
+    stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPeriphCLKFreq) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_GetPCLK2Freq) for HAL_RCC_GetPCLK2Freq
+    stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPeriphCLKFreq) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq) for HAL_RCC_GetSysClockFreq
+    stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPeriphCLKFreq) refers to stm32l0xx_hal_rcc.o(i.HAL_RCC_GetPCLK1Freq) for HAL_RCC_GetPCLK1Freq
+    stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_LSECSS_IRQHandler) refers to stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_LSECSS_Callback) for HAL_RCCEx_LSECSS_Callback
+    stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_PeriphCLKConfig) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_flash_ramfunc.o(i.FLASHRAM_SetErrorCode) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_flash_ramfunc.o(i.FLASHRAM_WaitForLastOperation) refers to stm32l0xx_hal_flash_ramfunc.o(i.FLASHRAM_SetErrorCode) for FLASHRAM_SetErrorCode
+    stm32l0xx_hal_flash_ramfunc.o(i.HAL_FLASHEx_GetError) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_flash_ramfunc.o(i.HAL_FLASHEx_HalfPageProgram) refers to stm32l0xx_hal_flash_ramfunc.o(i.FLASHRAM_WaitForLastOperation) for FLASHRAM_WaitForLastOperation
+    stm32l0xx_hal_flash.o(i.FLASH_SetErrorCode) refers to stm32l0xx_hal_flash.o(.bss) for .bss
+    stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) refers to stm32l0xx_hal_flash.o(i.FLASH_SetErrorCode) for FLASH_SetErrorCode
+    stm32l0xx_hal_flash.o(i.HAL_FLASH_GetError) refers to stm32l0xx_hal_flash.o(.bss) for .bss
+    stm32l0xx_hal_flash.o(i.HAL_FLASH_IRQHandler) refers to stm32l0xx_hal_flash.o(i.FLASH_SetErrorCode) for FLASH_SetErrorCode
+    stm32l0xx_hal_flash.o(i.HAL_FLASH_IRQHandler) refers to stm32l0xx_hal_flash.o(i.HAL_FLASH_OperationErrorCallback) for HAL_FLASH_OperationErrorCallback
+    stm32l0xx_hal_flash.o(i.HAL_FLASH_IRQHandler) refers to stm32l0xx_hal_flash.o(i.HAL_FLASH_EndOfOperationCallback) for HAL_FLASH_EndOfOperationCallback
+    stm32l0xx_hal_flash.o(i.HAL_FLASH_IRQHandler) refers to stm32l0xx_hal_flash_ex.o(i.FLASH_PageErase) for FLASH_PageErase
+    stm32l0xx_hal_flash.o(i.HAL_FLASH_IRQHandler) refers to stm32l0xx_hal_flash.o(.bss) for .bss
+    stm32l0xx_hal_flash.o(i.HAL_FLASH_OB_Launch) refers to stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) for FLASH_WaitForLastOperation
+    stm32l0xx_hal_flash.o(i.HAL_FLASH_Program) refers to stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) for FLASH_WaitForLastOperation
+    stm32l0xx_hal_flash.o(i.HAL_FLASH_Program) refers to stm32l0xx_hal_flash.o(.bss) for .bss
+    stm32l0xx_hal_flash.o(i.HAL_FLASH_Program_IT) refers to stm32l0xx_hal_flash.o(.bss) for .bss
+    stm32l0xx_hal_flash_ex.o(i.FLASH_OB_ProtectedSectorsConfig) refers to stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) for FLASH_WaitForLastOperation
+    stm32l0xx_hal_flash_ex.o(i.FLASH_OB_ProtectedSectorsConfig) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_flash_ex.o(i.FLASH_PageErase) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_AdvOBProgram) refers to stm32l0xx_hal_flash_ex.o(i.FLASH_OB_ProtectedSectorsConfig) for FLASH_OB_ProtectedSectorsConfig
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_DATAEEPROM_Erase) refers to stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) for FLASH_WaitForLastOperation
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_DATAEEPROM_Erase) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_DATAEEPROM_Program) refers to stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) for FLASH_WaitForLastOperation
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_DATAEEPROM_Program) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_Erase) refers to stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) for FLASH_WaitForLastOperation
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_Erase) refers to stm32l0xx_hal_flash_ex.o(i.FLASH_PageErase) for FLASH_PageErase
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_Erase) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_Erase_IT) refers to stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) for FLASH_WaitForLastOperation
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_Erase_IT) refers to stm32l0xx_hal_flash_ex.o(i.FLASH_PageErase) for FLASH_PageErase
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_Erase_IT) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OBProgram) refers to stm32l0xx_hal_flash_ex.o(i.FLASH_OB_ProtectedSectorsConfig) for FLASH_OB_ProtectedSectorsConfig
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OBProgram) refers to stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) for FLASH_WaitForLastOperation
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OBProgram) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OB_DeSelectPCROP) refers to stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) for FLASH_WaitForLastOperation
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OB_DeSelectPCROP) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OB_SelectPCROP) refers to stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation) for FLASH_WaitForLastOperation
+    stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OB_SelectPCROP) refers to stm32l0xx_hal_flash.o(.bss) for pFlash
+    stm32l0xx_hal_gpio.o(i.HAL_GPIO_EXTI_IRQHandler) refers to stm32l0xx_hal_gpio.o(i.HAL_GPIO_EXTI_Callback) for HAL_GPIO_EXTI_Callback
+    stm32l0xx_hal_dma.o(i.HAL_DMA_DeInit) refers to uidiv.o(.text) for __aeabi_uidivmod
+    stm32l0xx_hal_dma.o(i.HAL_DMA_Init) refers to uidiv.o(.text) for __aeabi_uidivmod
+    stm32l0xx_hal_dma.o(i.HAL_DMA_PollForTransfer) refers to stm32l0xx_hal.o(i.HAL_GetTick) for HAL_GetTick
+    stm32l0xx_hal_dma.o(i.HAL_DMA_Start) refers to stm32l0xx_hal_dma.o(i.DMA_SetConfig) for DMA_SetConfig
+    stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT) refers to stm32l0xx_hal_dma.o(i.DMA_SetConfig) for DMA_SetConfig
+    stm32l0xx_hal_dma.o(i.HAL_DMA_UnRegisterCallback) refers to stm32l0xx_hal_uart.o(i.__ARM_common_switch8) for __ARM_common_switch8
+    stm32l0xx_hal_pwr.o(i.HAL_PWR_PVD_IRQHandler) refers to stm32l0xx_hal_pwr.o(i.HAL_PWR_PVDCallback) for HAL_PWR_PVDCallback
+    stm32l0xx_hal_pwr_ex.o(i.HAL_PWREx_DisableLowPowerRunMode) refers to uidiv.o(.text) for __aeabi_uidivmod
+    stm32l0xx_hal_pwr_ex.o(i.HAL_PWREx_DisableLowPowerRunMode) refers to system_stm32l0xx.o(.data) for SystemCoreClock
+    stm32l0xx_hal_cortex.o(i.HAL_NVIC_SetPriority) refers to stm32l0xx_hal_cortex.o(i.NVIC_SetPriority) for NVIC_SetPriority
+    stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_Config) refers to stm32l0xx_hal_cortex.o(i.NVIC_SetPriority) for NVIC_SetPriority
+    stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_IRQHandler) refers to stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_Callback) for HAL_SYSTICK_Callback
+    system_stm32l0xx.o(i.SystemCoreClockUpdate) refers to uidiv.o(.text) for __aeabi_uidivmod
+    system_stm32l0xx.o(i.SystemCoreClockUpdate) refers to system_stm32l0xx.o(.data) for .data
+    system_stm32l0xx.o(i.SystemCoreClockUpdate) refers to system_stm32l0xx.o(.constdata) for .constdata
+    tos_cpu.o(i.cpu_context_switch) refers to port_s.o(.text) for port_context_switch
+    tos_cpu.o(i.cpu_init) refers to uidiv.o(.text) for __aeabi_uidivmod
+    tos_cpu.o(i.cpu_init) refers to tos_cpu.o(i.cpu_systick_init) for cpu_systick_init
+    tos_cpu.o(i.cpu_init) refers to tos_global.o(.data) for k_cpu_tick_per_second
+    tos_cpu.o(i.cpu_init) refers to system_stm32l0xx.o(.data) for SystemCoreClock
+    tos_cpu.o(i.cpu_init) refers to tos_global.o(.data) for k_cpu_cycle_per_tick
+    tos_cpu.o(i.cpu_irq_context_switch) refers to port_s.o(.text) for port_irq_context_switch
+    tos_cpu.o(i.cpu_reset) refers to port_c.o(i.port_cpu_reset) for port_cpu_reset
+    tos_cpu.o(i.cpu_sched_start) refers to port_s.o(.text) for port_sched_start
+    tos_cpu.o(i.cpu_systick_init) refers to port_c.o(i.port_systick_priority_set) for port_systick_priority_set
+    tos_cpu.o(i.cpu_systick_init) refers to port_c.o(i.port_systick_config) for port_systick_config
+    tos_cpu.o(i.tos_cpu_cpsr_restore) refers to port_s.o(.text) for port_cpsr_restore
+    tos_cpu.o(i.tos_cpu_cpsr_save) refers to port_s.o(.text) for port_cpsr_save
+    tos_cpu.o(i.tos_cpu_int_disable) refers to port_s.o(.text) for port_int_disable
+    tos_cpu.o(i.tos_cpu_int_enable) refers to port_s.o(.text) for port_int_enable
+    port_c.o(i.port_systick_config) refers to port_c.o(i.NVIC_SetPriority) for NVIC_SetPriority
+    port_c.o(i.port_systick_priority_set) refers to port_c.o(i.NVIC_SetPriority) for NVIC_SetPriority
+    port_s.o(.text) refers to tos_global.o(.data) for k_curr_task
+    port_s.o(.text) refers to tos_global.o(.data) for k_next_task
+    tos_binary_heap.o(i.bin_heap_do_percolate_up) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_binary_heap.o(i.bin_heap_percolate_down) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_binary_heap.o(i.bin_heap_percolate_down) refers to tos_binary_heap.o(i.bin_heap_do_percolate_up) for bin_heap_do_percolate_up
+    tos_binary_heap.o(i.tos_bin_heap_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_binary_heap.o(i.tos_bin_heap_destroy_dyn) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_binary_heap.o(i.tos_bin_heap_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_binary_heap.o(i.tos_bin_heap_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_binary_heap.o(i.tos_bin_heap_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_binary_heap.o(i.tos_bin_heap_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_binary_heap.o(i.tos_bin_heap_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_binary_heap.o(i.tos_bin_heap_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to tos_binary_heap.o(i.tos_bin_heap_is_empty) for tos_bin_heap_is_empty
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_binary_heap.o(i.tos_bin_heap_pop) refers to tos_binary_heap.o(i.bin_heap_percolate_down) for bin_heap_percolate_down
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to tos_binary_heap.o(i.tos_bin_heap_is_full) for tos_bin_heap_is_full
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to tos_binary_heap.o(i.bin_heap_do_percolate_up) for bin_heap_do_percolate_up
+    tos_binary_heap.o(i.tos_bin_heap_push) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_char_fifo.o(i.tos_chr_fifo_create) refers to tos_ring_queue.o(i.tos_ring_q_create) for tos_ring_q_create
+    tos_char_fifo.o(i.tos_chr_fifo_create_dyn) refers to tos_ring_queue.o(i.tos_ring_q_create_dyn) for tos_ring_q_create_dyn
+    tos_char_fifo.o(i.tos_chr_fifo_destroy) refers to tos_ring_queue.o(i.tos_ring_q_destroy) for tos_ring_q_destroy
+    tos_char_fifo.o(i.tos_chr_fifo_destroy_dyn) refers to tos_ring_queue.o(i.tos_ring_q_destroy_dyn) for tos_ring_q_destroy_dyn
+    tos_char_fifo.o(i.tos_chr_fifo_flush) refers to tos_ring_queue.o(i.tos_ring_q_flush) for tos_ring_q_flush
+    tos_char_fifo.o(i.tos_chr_fifo_is_empty) refers to tos_ring_queue.o(i.tos_ring_q_is_empty) for tos_ring_q_is_empty
+    tos_char_fifo.o(i.tos_chr_fifo_is_full) refers to tos_ring_queue.o(i.tos_ring_q_is_full) for tos_ring_q_is_full
+    tos_char_fifo.o(i.tos_chr_fifo_pop) refers to tos_ring_queue.o(i.tos_ring_q_dequeue) for tos_ring_q_dequeue
+    tos_char_fifo.o(i.tos_chr_fifo_pop_stream) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_char_fifo.o(i.tos_chr_fifo_pop_stream) refers to tos_ring_queue.o(i.tos_ring_q_dequeue) for tos_ring_q_dequeue
+    tos_char_fifo.o(i.tos_chr_fifo_pop_stream) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_char_fifo.o(i.tos_chr_fifo_push) refers to tos_ring_queue.o(i.tos_ring_q_enqueue) for tos_ring_q_enqueue
+    tos_char_fifo.o(i.tos_chr_fifo_push_stream) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_char_fifo.o(i.tos_chr_fifo_push_stream) refers to tos_ring_queue.o(i.tos_ring_q_enqueue) for tos_ring_q_enqueue
+    tos_char_fifo.o(i.tos_chr_fifo_push_stream) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_completion.o(i.completion_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_completion.o(i.completion_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_completion.o(i.completion_do_post) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_completion.o(i.completion_do_post) refers to tos_pend.o(i.pend_wakeup) for pend_wakeup
+    tos_completion.o(i.completion_do_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_completion.o(i.tos_completion_create) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_completion.o(i.tos_completion_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_completion.o(i.tos_completion_destroy) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_completion.o(i.tos_completion_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_completion.o(i.tos_completion_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_completion.o(i.tos_completion_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_completion.o(i.tos_completion_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_completion.o(i.tos_completion_is_done) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_completion.o(i.tos_completion_is_done) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_completion.o(i.tos_completion_pend) refers to tos_completion.o(i.tos_completion_pend_timed) for tos_completion_pend_timed
+    tos_completion.o(i.tos_completion_pend_timed) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_completion.o(i.tos_completion_pend_timed) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_completion.o(i.tos_completion_pend_timed) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_completion.o(i.tos_completion_pend_timed) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_completion.o(i.tos_completion_pend_timed) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_completion.o(i.tos_completion_pend_timed) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_completion.o(i.tos_completion_pend_timed) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_completion.o(i.tos_completion_pend_timed) refers to tos_global.o(.data) for k_curr_task
+    tos_completion.o(i.tos_completion_post) refers to tos_completion.o(i.completion_do_post) for completion_do_post
+    tos_completion.o(i.tos_completion_post_all) refers to tos_completion.o(i.completion_do_post) for completion_do_post
+    tos_completion.o(i.tos_completion_reset) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_completion.o(i.tos_completion_reset) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_countdownlatch.o(i.tos_countdownlatch_create) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_countdownlatch.o(i.tos_countdownlatch_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_countdownlatch.o(i.tos_countdownlatch_destroy) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_countdownlatch.o(i.tos_countdownlatch_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_countdownlatch.o(i.tos_countdownlatch_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_countdownlatch.o(i.tos_countdownlatch_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_countdownlatch.o(i.tos_countdownlatch_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_countdownlatch.o(i.tos_countdownlatch_pend) refers to tos_countdownlatch.o(i.tos_countdownlatch_pend_timed) for tos_countdownlatch_pend_timed
+    tos_countdownlatch.o(i.tos_countdownlatch_pend_timed) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_countdownlatch.o(i.tos_countdownlatch_pend_timed) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_countdownlatch.o(i.tos_countdownlatch_pend_timed) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_countdownlatch.o(i.tos_countdownlatch_pend_timed) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_countdownlatch.o(i.tos_countdownlatch_pend_timed) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_countdownlatch.o(i.tos_countdownlatch_pend_timed) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_countdownlatch.o(i.tos_countdownlatch_pend_timed) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_countdownlatch.o(i.tos_countdownlatch_pend_timed) refers to tos_global.o(.data) for k_curr_task
+    tos_countdownlatch.o(i.tos_countdownlatch_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_countdownlatch.o(i.tos_countdownlatch_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_countdownlatch.o(i.tos_countdownlatch_post) refers to tos_pend.o(i.pend_wakeup_one) for pend_wakeup_one
+    tos_countdownlatch.o(i.tos_countdownlatch_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_countdownlatch.o(i.tos_countdownlatch_reset) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_countdownlatch.o(i.tos_countdownlatch_reset) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_event.o(i.event_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_event.o(i.event_do_post) refers to tos_event.o(i.event_is_match) for event_is_match
+    tos_event.o(i.event_do_post) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_event.o(i.event_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_event.o(i.event_do_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_event.o(i.tos_event_create) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_event.o(i.tos_event_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_event.o(i.tos_event_destroy) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_event.o(i.tos_event_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_event.o(i.tos_event_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_event.o(i.tos_event_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_event.o(i.tos_event_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_event.o(i.tos_event_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_event.o(i.tos_event_pend) refers to tos_event.o(i.event_is_match) for event_is_match
+    tos_event.o(i.tos_event_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_event.o(i.tos_event_pend) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_event.o(i.tos_event_pend) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_event.o(i.tos_event_pend) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_event.o(i.tos_event_pend) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_event.o(i.tos_event_pend) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_event.o(i.tos_event_pend) refers to tos_global.o(.data) for k_curr_task
+    tos_event.o(i.tos_event_post) refers to tos_event.o(i.event_do_post) for event_do_post
+    tos_event.o(i.tos_event_post_keep) refers to tos_event.o(i.event_do_post) for event_do_post
+    tos_global.o(.constdata) refers to tos_global.o(.bss) for k_idle_task_stk
+    tos_mail_queue.o(i.mail_q_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mail_queue.o(i.mail_q_do_post) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_mail_queue.o(i.mail_q_do_post) refers to tos_ring_queue.o(i.tos_ring_q_enqueue) for tos_ring_q_enqueue
+    tos_mail_queue.o(i.mail_q_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mail_queue.o(i.mail_q_do_post) refers to tos_mail_queue.o(i.mail_task_recv) for mail_task_recv
+    tos_mail_queue.o(i.mail_q_do_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_mail_queue.o(i.mail_task_recv) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_mail_queue.o(i.mail_task_recv) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_mail_queue.o(i.tos_mail_q_create) refers to tos_ring_queue.o(i.tos_ring_q_create) for tos_ring_q_create
+    tos_mail_queue.o(i.tos_mail_q_create) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_mail_queue.o(i.tos_mail_q_create_dyn) refers to tos_ring_queue.o(i.tos_ring_q_create_dyn) for tos_ring_q_create_dyn
+    tos_mail_queue.o(i.tos_mail_q_create_dyn) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_mail_queue.o(i.tos_mail_q_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mail_queue.o(i.tos_mail_q_destroy) refers to tos_ring_queue.o(i.tos_ring_q_destroy) for tos_ring_q_destroy
+    tos_mail_queue.o(i.tos_mail_q_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mail_queue.o(i.tos_mail_q_destroy) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_mail_queue.o(i.tos_mail_q_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_mail_queue.o(i.tos_mail_q_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_mail_queue.o(i.tos_mail_q_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_mail_queue.o(i.tos_mail_q_destroy_dyn) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mail_queue.o(i.tos_mail_q_destroy_dyn) refers to tos_ring_queue.o(i.tos_ring_q_destroy_dyn) for tos_ring_q_destroy_dyn
+    tos_mail_queue.o(i.tos_mail_q_destroy_dyn) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mail_queue.o(i.tos_mail_q_destroy_dyn) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_mail_queue.o(i.tos_mail_q_destroy_dyn) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_mail_queue.o(i.tos_mail_q_destroy_dyn) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_mail_queue.o(i.tos_mail_q_destroy_dyn) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_mail_queue.o(i.tos_mail_q_flush) refers to tos_ring_queue.o(i.tos_ring_q_flush) for tos_ring_q_flush
+    tos_mail_queue.o(i.tos_mail_q_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mail_queue.o(i.tos_mail_q_pend) refers to tos_ring_queue.o(i.tos_ring_q_dequeue) for tos_ring_q_dequeue
+    tos_mail_queue.o(i.tos_mail_q_pend) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_mail_queue.o(i.tos_mail_q_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mail_queue.o(i.tos_mail_q_pend) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_mail_queue.o(i.tos_mail_q_pend) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_mail_queue.o(i.tos_mail_q_pend) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_mail_queue.o(i.tos_mail_q_pend) refers to tos_global.o(.data) for k_curr_task
+    tos_mail_queue.o(i.tos_mail_q_post) refers to tos_mail_queue.o(i.mail_q_do_post) for mail_q_do_post
+    tos_mail_queue.o(i.tos_mail_q_post_all) refers to tos_mail_queue.o(i.mail_q_do_post) for mail_q_do_post
+    tos_message_queue.o(i.msg_q_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_message_queue.o(i.msg_q_do_post) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_message_queue.o(i.msg_q_do_post) refers to tos_ring_queue.o(i.tos_ring_q_enqueue) for tos_ring_q_enqueue
+    tos_message_queue.o(i.msg_q_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_message_queue.o(i.msg_q_do_post) refers to tos_message_queue.o(i.msg_q_task_recv) for msg_q_task_recv
+    tos_message_queue.o(i.msg_q_do_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_message_queue.o(i.msg_q_task_recv) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_message_queue.o(i.tos_msg_q_create) refers to tos_ring_queue.o(i.tos_ring_q_create) for tos_ring_q_create
+    tos_message_queue.o(i.tos_msg_q_create) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_message_queue.o(i.tos_msg_q_create_dyn) refers to tos_ring_queue.o(i.tos_ring_q_create_dyn) for tos_ring_q_create_dyn
+    tos_message_queue.o(i.tos_msg_q_create_dyn) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_message_queue.o(i.tos_msg_q_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_message_queue.o(i.tos_msg_q_destroy) refers to tos_ring_queue.o(i.tos_ring_q_destroy) for tos_ring_q_destroy
+    tos_message_queue.o(i.tos_msg_q_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_message_queue.o(i.tos_msg_q_destroy) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_message_queue.o(i.tos_msg_q_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_message_queue.o(i.tos_msg_q_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_message_queue.o(i.tos_msg_q_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_message_queue.o(i.tos_msg_q_destroy_dyn) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_message_queue.o(i.tos_msg_q_destroy_dyn) refers to tos_ring_queue.o(i.tos_ring_q_destroy_dyn) for tos_ring_q_destroy_dyn
+    tos_message_queue.o(i.tos_msg_q_destroy_dyn) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_message_queue.o(i.tos_msg_q_destroy_dyn) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_message_queue.o(i.tos_msg_q_destroy_dyn) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_message_queue.o(i.tos_msg_q_destroy_dyn) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_message_queue.o(i.tos_msg_q_destroy_dyn) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_message_queue.o(i.tos_msg_q_flush) refers to tos_ring_queue.o(i.tos_ring_q_flush) for tos_ring_q_flush
+    tos_message_queue.o(i.tos_msg_q_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_message_queue.o(i.tos_msg_q_pend) refers to tos_ring_queue.o(i.tos_ring_q_dequeue) for tos_ring_q_dequeue
+    tos_message_queue.o(i.tos_msg_q_pend) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_message_queue.o(i.tos_msg_q_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_message_queue.o(i.tos_msg_q_pend) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_message_queue.o(i.tos_msg_q_pend) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_message_queue.o(i.tos_msg_q_pend) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_message_queue.o(i.tos_msg_q_pend) refers to tos_global.o(.data) for k_curr_task
+    tos_message_queue.o(i.tos_msg_q_post) refers to tos_message_queue.o(i.msg_q_do_post) for msg_q_do_post
+    tos_message_queue.o(i.tos_msg_q_post_all) refers to tos_message_queue.o(i.msg_q_do_post) for msg_q_do_post
+    tos_mmblk.o(i.tos_mmblk_alloc) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mmblk.o(i.tos_mmblk_alloc) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mmblk.o(i.tos_mmblk_free) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mmblk.o(i.tos_mmblk_free) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mmblk.o(i.tos_mmblk_pool_create) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mmheap.o(i.__ffs) refers to tos_mmheap.o(i.generic_fls) for generic_fls
+    tos_mmheap.o(i.__fls) refers to tos_mmheap.o(i.generic_fls) for generic_fls
+    tos_mmheap.o(i.blk_absorb) refers to tos_mmheap.o(i.blk_link_next) for blk_link_next
+    tos_mmheap.o(i.blk_insert) refers to tos_mmheap.o(i.mapping_insert) for mapping_insert
+    tos_mmheap.o(i.blk_insert) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.blk_link_next) refers to tos_mmheap.o(i.blk_next) for blk_next
+    tos_mmheap.o(i.blk_locate_free) refers to tos_mmheap.o(i.__fls) for __fls
+    tos_mmheap.o(i.blk_locate_free) refers to tos_mmheap.o(i.mapping_insert) for mapping_insert
+    tos_mmheap.o(i.blk_locate_free) refers to tos_mmheap.o(i.__ffs) for __ffs
+    tos_mmheap.o(i.blk_locate_free) refers to tos_mmheap.o(i.remove_free_block) for remove_free_block
+    tos_mmheap.o(i.blk_locate_free) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.blk_mark_as_free) refers to tos_mmheap.o(i.blk_link_next) for blk_link_next
+    tos_mmheap.o(i.blk_mark_as_used) refers to tos_mmheap.o(i.blk_next) for blk_next
+    tos_mmheap.o(i.blk_merge_next) refers to tos_mmheap.o(i.blk_next) for blk_next
+    tos_mmheap.o(i.blk_merge_next) refers to tos_mmheap.o(i.blk_remove) for blk_remove
+    tos_mmheap.o(i.blk_merge_next) refers to tos_mmheap.o(i.blk_absorb) for blk_absorb
+    tos_mmheap.o(i.blk_prepare_used) refers to tos_mmheap.o(i.blk_can_split) for blk_can_split
+    tos_mmheap.o(i.blk_prepare_used) refers to tos_mmheap.o(i.blk_split) for blk_split
+    tos_mmheap.o(i.blk_prepare_used) refers to tos_mmheap.o(i.blk_link_next) for blk_link_next
+    tos_mmheap.o(i.blk_prepare_used) refers to tos_mmheap.o(i.blk_insert) for blk_insert
+    tos_mmheap.o(i.blk_prepare_used) refers to tos_mmheap.o(i.blk_mark_as_used) for blk_mark_as_used
+    tos_mmheap.o(i.blk_remove) refers to tos_mmheap.o(i.mapping_insert) for mapping_insert
+    tos_mmheap.o(i.blk_remove) refers to tos_mmheap.o(i.remove_free_block) for remove_free_block
+    tos_mmheap.o(i.blk_split) refers to tos_mmheap.o(i.blk_mark_as_free) for blk_mark_as_free
+    tos_mmheap.o(i.mapping_insert) refers to tos_mmheap.o(i.__fls) for __fls
+    tos_mmheap.o(i.mmheap_ctl_init) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.mmheap_init) refers to tos_mmheap.o(i.mmheap_ctl_init) for mmheap_ctl_init
+    tos_mmheap.o(i.mmheap_init_with_pool) refers to tos_mmheap.o(i.mmheap_ctl_init) for mmheap_ctl_init
+    tos_mmheap.o(i.mmheap_init_with_pool) refers to tos_mmheap.o(i.tos_mmheap_pool_add) for tos_mmheap_pool_add
+    tos_mmheap.o(i.mmheap_pool_is_exist) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.remove_free_block) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.adjust_request_size) for adjust_request_size
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.blk_locate_free) for blk_locate_free
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.blk_can_split) for blk_can_split
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.blk_split) for blk_split
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.blk_link_next) for blk_link_next
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.blk_insert) for blk_insert
+    tos_mmheap.o(i.tos_mmheap_aligned_alloc) refers to tos_mmheap.o(i.blk_prepare_used) for blk_prepare_used
+    tos_mmheap.o(i.tos_mmheap_alloc) refers to tos_mmheap.o(i.adjust_request_size) for adjust_request_size
+    tos_mmheap.o(i.tos_mmheap_alloc) refers to tos_mmheap.o(i.blk_locate_free) for blk_locate_free
+    tos_mmheap.o(i.tos_mmheap_alloc) refers to tos_mmheap.o(i.blk_prepare_used) for blk_prepare_used
+    tos_mmheap.o(i.tos_mmheap_calloc) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_mmheap.o(i.tos_mmheap_calloc) refers to memseta.o(.text) for __aeabi_memclr
+    tos_mmheap.o(i.tos_mmheap_check) refers to tos_mmheap.o(i.tos_mmheap_pool_check) for tos_mmheap_pool_check
+    tos_mmheap.o(i.tos_mmheap_check) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.tos_mmheap_free) refers to tos_mmheap.o(i.blk_mark_as_free) for blk_mark_as_free
+    tos_mmheap.o(i.tos_mmheap_free) refers to tos_mmheap.o(i.blk_remove) for blk_remove
+    tos_mmheap.o(i.tos_mmheap_free) refers to tos_mmheap.o(i.blk_absorb) for blk_absorb
+    tos_mmheap.o(i.tos_mmheap_free) refers to tos_mmheap.o(i.blk_merge_next) for blk_merge_next
+    tos_mmheap.o(i.tos_mmheap_free) refers to tos_mmheap.o(i.blk_insert) for blk_insert
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.mmheap_pool_is_exist) for mmheap_pool_is_exist
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.blk_insert) for blk_insert
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_mmheap.o(i.blk_link_next) for blk_link_next
+    tos_mmheap.o(i.tos_mmheap_pool_add) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.tos_mmheap_pool_check) refers to tos_mmheap.o(i.blk_next) for blk_next
+    tos_mmheap.o(i.tos_mmheap_pool_rmv) refers to tos_mmheap.o(i.mmheap_pool_is_exist) for mmheap_pool_is_exist
+    tos_mmheap.o(i.tos_mmheap_pool_rmv) refers to tos_mmheap.o(i.mapping_insert) for mapping_insert
+    tos_mmheap.o(i.tos_mmheap_pool_rmv) refers to tos_mmheap.o(i.remove_free_block) for remove_free_block
+    tos_mmheap.o(i.tos_mmheap_pool_rmv) refers to tos_global.o(.bss) for k_mmheap_ctl
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_next) for blk_next
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.adjust_request_size) for adjust_request_size
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_merge_next) for blk_merge_next
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_mark_as_used) for blk_mark_as_used
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_can_split) for blk_can_split
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_split) for blk_split
+    tos_mmheap.o(i.tos_mmheap_realloc) refers to tos_mmheap.o(i.blk_insert) for blk_insert
+    tos_mutex.o(i.mutex_old_owner_release) refers to tos_task.o(i.tos_task_prio_change) for tos_task_prio_change
+    tos_mutex.o(i.mutex_release) refers to tos_mutex.o(i.mutex_old_owner_release) for mutex_old_owner_release
+    tos_mutex.o(i.mutex_release) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_mutex.o(i.tos_mutex_create) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mutex.o(i.tos_mutex_create) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_mutex.o(i.mutex_old_owner_release) for mutex_old_owner_release
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mutex.o(i.tos_mutex_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_mutex.o(i.tos_mutex_pend) refers to tos_mutex.o(i.tos_mutex_pend_timed) for tos_mutex_pend_timed
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_mutex.o(i.mutex_fresh_owner_mark) for mutex_fresh_owner_mark
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_task.o(i.tos_task_prio_change) for tos_task_prio_change
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_mutex.o(i.tos_mutex_pend_timed) refers to tos_global.o(.data) for k_curr_task
+    tos_mutex.o(i.tos_mutex_post) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_mutex.o(i.tos_mutex_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_mutex.o(i.tos_mutex_post) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_mutex.o(i.tos_mutex_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_mutex.o(i.tos_mutex_post) refers to tos_mutex.o(i.mutex_old_owner_release) for mutex_old_owner_release
+    tos_mutex.o(i.tos_mutex_post) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_mutex.o(i.tos_mutex_post) refers to tos_pend.o(i.pend_highest_pending_task_get) for pend_highest_pending_task_get
+    tos_mutex.o(i.tos_mutex_post) refers to tos_mutex.o(i.mutex_fresh_owner_mark) for mutex_fresh_owner_mark
+    tos_mutex.o(i.tos_mutex_post) refers to tos_pend.o(i.pend_highest_pending_prio_get) for pend_highest_pending_prio_get
+    tos_mutex.o(i.tos_mutex_post) refers to tos_task.o(i.tos_task_prio_change) for tos_task_prio_change
+    tos_mutex.o(i.tos_mutex_post) refers to tos_pend.o(i.pend_wakeup_one) for pend_wakeup_one
+    tos_mutex.o(i.tos_mutex_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_pend.o(i.pend_list_adjust) refers to tos_pend.o(i.pend_list_add) for pend_list_add
+    tos_pend.o(i.pend_task_block) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_pend.o(i.pend_task_block) refers to tos_pend.o(i.pend_list_add) for pend_list_add
+    tos_pend.o(i.pend_task_block) refers to tos_tick.o(i.tick_list_add) for tick_list_add
+    tos_pend.o(i.pend_task_wakeup) refers to tos_pend.o(i.pend_list_remove) for pend_list_remove
+    tos_pend.o(i.pend_task_wakeup) refers to tos_tick.o(i.tick_list_remove) for tick_list_remove
+    tos_pend.o(i.pend_task_wakeup) refers to tos_sched.o(i.readyqueue_add) for readyqueue_add
+    tos_pend.o(i.pend_wakeup) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_pend.o(i.pend_wakeup) refers to tos_pend.o(i.pend_wakeup_one) for pend_wakeup_one
+    tos_pend.o(i.pend_wakeup_all) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_pend.o(i.pend_wakeup_one) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_priority_mail_queue.o(i.prio_mail_q_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_mail_queue.o(i.prio_mail_q_do_post) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_priority_mail_queue.o(i.prio_mail_q_do_post) refers to tos_priority_queue.o(i.tos_prio_q_enqueue) for tos_prio_q_enqueue
+    tos_priority_mail_queue.o(i.prio_mail_q_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_mail_queue.o(i.prio_mail_q_do_post) refers to tos_priority_mail_queue.o(i.prio_mail_task_recv) for prio_mail_task_recv
+    tos_priority_mail_queue.o(i.prio_mail_q_do_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_priority_mail_queue.o(i.prio_mail_task_recv) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_priority_mail_queue.o(i.prio_mail_task_recv) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_create) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_create) refers to tos_priority_queue.o(i.tos_prio_q_create) for tos_prio_q_create
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_create) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_create) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_create_dyn) refers to tos_priority_queue.o(i.tos_prio_q_create_dyn) for tos_prio_q_create_dyn
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_create_dyn) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy) refers to tos_priority_queue.o(i.tos_prio_q_destroy) for tos_prio_q_destroy
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy_dyn) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy_dyn) refers to tos_priority_queue.o(i.tos_prio_q_destroy_dyn) for tos_prio_q_destroy_dyn
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy_dyn) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy_dyn) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy_dyn) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy_dyn) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy_dyn) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_flush) refers to tos_priority_queue.o(i.tos_prio_q_flush) for tos_prio_q_flush
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_pend) refers to tos_priority_queue.o(i.tos_prio_q_dequeue) for tos_prio_q_dequeue
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_pend) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_pend) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_pend) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_pend) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_pend) refers to tos_global.o(.data) for k_curr_task
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_post) refers to tos_priority_mail_queue.o(i.prio_mail_q_do_post) for prio_mail_q_do_post
+    tos_priority_mail_queue.o(i.tos_prio_mail_q_post_all) refers to tos_priority_mail_queue.o(i.prio_mail_q_do_post) for prio_mail_q_do_post
+    tos_priority_message_queue.o(i.prio_msg_q_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_message_queue.o(i.prio_msg_q_do_post) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_priority_message_queue.o(i.prio_msg_q_do_post) refers to tos_priority_queue.o(i.tos_prio_q_enqueue) for tos_prio_q_enqueue
+    tos_priority_message_queue.o(i.prio_msg_q_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_message_queue.o(i.prio_msg_q_do_post) refers to tos_priority_message_queue.o(i.prio_msg_q_task_recv) for prio_msg_q_task_recv
+    tos_priority_message_queue.o(i.prio_msg_q_do_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_priority_message_queue.o(i.prio_msg_q_task_recv) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_priority_message_queue.o(i.tos_prio_msg_q_create) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_priority_message_queue.o(i.tos_prio_msg_q_create) refers to tos_priority_queue.o(i.tos_prio_q_create) for tos_prio_q_create
+    tos_priority_message_queue.o(i.tos_prio_msg_q_create) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_priority_message_queue.o(i.tos_prio_msg_q_create) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_priority_message_queue.o(i.tos_prio_msg_q_create_dyn) refers to tos_priority_queue.o(i.tos_prio_q_create_dyn) for tos_prio_q_create_dyn
+    tos_priority_message_queue.o(i.tos_prio_msg_q_create_dyn) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy) refers to tos_priority_queue.o(i.tos_prio_q_destroy) for tos_prio_q_destroy
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy_dyn) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy_dyn) refers to tos_priority_queue.o(i.tos_prio_q_destroy_dyn) for tos_prio_q_destroy_dyn
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy_dyn) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy_dyn) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy_dyn) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy_dyn) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy_dyn) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_priority_message_queue.o(i.tos_prio_msg_q_destroy_dyn) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_priority_message_queue.o(i.tos_prio_msg_q_flush) refers to tos_priority_queue.o(i.tos_prio_q_flush) for tos_prio_q_flush
+    tos_priority_message_queue.o(i.tos_prio_msg_q_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_message_queue.o(i.tos_prio_msg_q_pend) refers to tos_priority_queue.o(i.tos_prio_q_dequeue) for tos_prio_q_dequeue
+    tos_priority_message_queue.o(i.tos_prio_msg_q_pend) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_priority_message_queue.o(i.tos_prio_msg_q_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_message_queue.o(i.tos_prio_msg_q_pend) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_priority_message_queue.o(i.tos_prio_msg_q_pend) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_priority_message_queue.o(i.tos_prio_msg_q_pend) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_priority_message_queue.o(i.tos_prio_msg_q_pend) refers to tos_global.o(.data) for k_curr_task
+    tos_priority_message_queue.o(i.tos_prio_msg_q_post) refers to tos_priority_message_queue.o(i.prio_msg_q_do_post) for prio_msg_q_do_post
+    tos_priority_message_queue.o(i.tos_prio_msg_q_post_all) refers to tos_priority_message_queue.o(i.prio_msg_q_do_post) for prio_msg_q_do_post
+    tos_priority_queue.o(i.prio_q_prio_mgr_deinit) refers to tos_binary_heap.o(i.tos_bin_heap_destroy) for tos_bin_heap_destroy
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to tos_binary_heap.o(i.tos_bin_heap_pop) for tos_bin_heap_pop
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to printf5.o(i.__0printf$5) for __2printf
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to tos_sys.o(i.tos_knl_sched_lock) for tos_knl_sched_lock
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to tos_cpu.o(i.tos_cpu_int_disable) for tos_cpu_int_disable
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to tos_priority_queue.o(.constdata) for .constdata
+    tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) refers to tos_priority_queue.o(i.tos_prio_q_enqueue) for i.tos_prio_q_enqueue
+    tos_priority_queue.o(i.tos_prio_q_create) refers to tos_binary_heap.o(i.tos_bin_heap_create) for tos_bin_heap_create
+    tos_priority_queue.o(i.tos_prio_q_create) refers to tos_priority_queue.o(i.prio_q_mgr_entry_cmp) for prio_q_mgr_entry_cmp
+    tos_priority_queue.o(i.tos_prio_q_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_priority_queue.o(i.tos_prio_q_create_dyn) refers to tos_priority_queue.o(i.tos_prio_q_create) for tos_prio_q_create
+    tos_priority_queue.o(i.tos_prio_q_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to tos_priority_queue.o(i.tos_prio_q_is_empty) for tos_prio_q_is_empty
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue) for prio_q_prio_mgr_slot_dequeue
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_priority_queue.o(i.tos_prio_q_dequeue) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_queue.o(i.tos_prio_q_destroy) refers to tos_priority_queue.o(i.prio_q_prio_mgr_deinit) for prio_q_prio_mgr_deinit
+    tos_priority_queue.o(i.tos_prio_q_destroy_dyn) refers to tos_priority_queue.o(i.prio_q_prio_mgr_deinit) for prio_q_prio_mgr_deinit
+    tos_priority_queue.o(i.tos_prio_q_destroy_dyn) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_priority_queue.o(i.tos_prio_q_is_full) for tos_prio_q_is_full
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to printf5.o(i.__0printf$5) for __2printf
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_sys.o(i.tos_knl_sched_lock) for tos_knl_sched_lock
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_cpu.o(i.tos_cpu_int_disable) for tos_cpu_int_disable
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_binary_heap.o(i.tos_bin_heap_push) for tos_bin_heap_push
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_queue.o(i.tos_prio_q_enqueue) refers to tos_priority_queue.o(.constdata) for .constdata
+    tos_priority_queue.o(i.tos_prio_q_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_queue.o(i.tos_prio_q_flush) refers to tos_binary_heap.o(i.tos_bin_heap_flush) for tos_bin_heap_flush
+    tos_priority_queue.o(i.tos_prio_q_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_queue.o(i.tos_prio_q_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_queue.o(i.tos_prio_q_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_priority_queue.o(i.tos_prio_q_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_priority_queue.o(i.tos_prio_q_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_ring_queue.o(i.tos_ring_q_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_ring_queue.o(i.tos_ring_q_dequeue) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_ring_queue.o(i.tos_ring_q_dequeue) refers to tos_ring_queue.o(i.tos_ring_q_is_empty) for tos_ring_q_is_empty
+    tos_ring_queue.o(i.tos_ring_q_dequeue) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_ring_queue.o(i.tos_ring_q_dequeue) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_ring_queue.o(i.tos_ring_q_dequeue) refers to uidiv.o(.text) for __aeabi_uidivmod
+    tos_ring_queue.o(i.tos_ring_q_destroy_dyn) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_ring_queue.o(i.tos_ring_q_enqueue) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_ring_queue.o(i.tos_ring_q_enqueue) refers to tos_ring_queue.o(i.tos_ring_q_is_full) for tos_ring_q_is_full
+    tos_ring_queue.o(i.tos_ring_q_enqueue) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_ring_queue.o(i.tos_ring_q_enqueue) refers to memcpya.o(.text) for __aeabi_memcpy
+    tos_ring_queue.o(i.tos_ring_q_enqueue) refers to uidiv.o(.text) for __aeabi_uidivmod
+    tos_ring_queue.o(i.tos_ring_q_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_ring_queue.o(i.tos_ring_q_flush) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_ring_queue.o(i.tos_ring_q_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_ring_queue.o(i.tos_ring_q_is_empty) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_ring_queue.o(i.tos_ring_q_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_ring_queue.o(i.tos_ring_q_is_full) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sched.o(i.readyqueue_add) refers to tos_sched.o(i.readyqueue_add_tail) for readyqueue_add_tail
+    tos_sched.o(i.readyqueue_add) refers to tos_sched.o(i.readyqueue_add_head) for readyqueue_add_head
+    tos_sched.o(i.readyqueue_add) refers to tos_global.o(.data) for k_curr_task
+    tos_sched.o(i.readyqueue_add_head) refers to tos_sched.o(i.readyqueue_prio_mark) for readyqueue_prio_mark
+    tos_sched.o(i.readyqueue_add_head) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_add_tail) refers to tos_sched.o(i.readyqueue_prio_mark) for readyqueue_prio_mark
+    tos_sched.o(i.readyqueue_add_tail) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_first_task_get) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_highest_ready_task_get) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_init) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_is_prio_onlyone) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_move_head_to_tail) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_prio_mark) refers to tos_global.o(.bss) for k_rdyq
+    tos_sched.o(i.readyqueue_remove) refers to tos_cpu.o(i.tos_cpu_clz) for tos_cpu_clz
+    tos_sched.o(i.readyqueue_remove) refers to tos_global.o(.bss) for k_rdyq
+    tos_sem.o(i.sem_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sem.o(i.sem_do_post) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sem.o(i.sem_do_post) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_sem.o(i.sem_do_post) refers to tos_pend.o(i.pend_wakeup) for pend_wakeup
+    tos_sem.o(i.sem_do_post) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_sem.o(i.tos_sem_create) refers to tos_sem.o(i.tos_sem_create_max) for tos_sem_create_max
+    tos_sem.o(i.tos_sem_create_max) refers to tos_pend.o(i.pend_object_init) for pend_object_init
+    tos_sem.o(i.tos_sem_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sem.o(i.tos_sem_destroy) refers to tos_pend.o(i.pend_is_nopending) for pend_is_nopending
+    tos_sem.o(i.tos_sem_destroy) refers to tos_pend.o(i.pend_wakeup_all) for pend_wakeup_all
+    tos_sem.o(i.tos_sem_destroy) refers to tos_pend.o(i.pend_object_deinit) for pend_object_deinit
+    tos_sem.o(i.tos_sem_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sem.o(i.tos_sem_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_sem.o(i.tos_sem_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sem.o(i.tos_sem_pend) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sem.o(i.tos_sem_pend) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_sem.o(i.tos_sem_pend) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_sem.o(i.tos_sem_pend) refers to tos_pend.o(i.pend_task_block) for pend_task_block
+    tos_sem.o(i.tos_sem_pend) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_sem.o(i.tos_sem_pend) refers to tos_pend.o(i.pend_state2errno) for pend_state2errno
+    tos_sem.o(i.tos_sem_pend) refers to tos_global.o(.data) for k_curr_task
+    tos_sem.o(i.tos_sem_post) refers to tos_sem.o(i.sem_do_post) for sem_do_post
+    tos_sem.o(i.tos_sem_post_all) refers to tos_sem.o(i.sem_do_post) for sem_do_post
+    tos_sys.o(i.knl_idle_entry) refers to tos_task.o(i.task_free_all) for task_free_all
+    tos_sys.o(i.knl_idle_init) refers to tos_task.o(i.tos_task_create) for tos_task_create
+    tos_sys.o(i.knl_idle_init) refers to tos_global.o(.constdata) for k_idle_task_stk_size
+    tos_sys.o(i.knl_idle_init) refers to tos_global.o(.constdata) for k_idle_task_stk_addr
+    tos_sys.o(i.knl_idle_init) refers to tos_sys.o(i.knl_idle_entry) for knl_idle_entry
+    tos_sys.o(i.knl_idle_init) refers to tos_global.o(.bss) for k_idle_task
+    tos_sys.o(i.knl_is_idle) refers to tos_global.o(.bss) for k_idle_task
+    tos_sys.o(i.knl_is_inirq) refers to tos_global.o(.data) for k_irq_nest_cnt
+    tos_sys.o(i.knl_is_sched_locked) refers to tos_global.o(.data) for k_sched_lock_nest_cnt
+    tos_sys.o(i.knl_is_self) refers to tos_global.o(.data) for k_curr_task
+    tos_sys.o(i.knl_sched) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sys.o(i.knl_sched) refers to tos_sched.o(i.readyqueue_highest_ready_task_get) for readyqueue_highest_ready_task_get
+    tos_sys.o(i.knl_sched) refers to tos_cpu.o(i.cpu_context_switch) for cpu_context_switch
+    tos_sys.o(i.knl_sched) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sys.o(i.knl_sched) refers to tos_global.o(.data) for k_knl_state
+    tos_sys.o(i.knl_sched) refers to tos_global.o(.data) for k_irq_nest_cnt
+    tos_sys.o(i.knl_sched) refers to tos_global.o(.data) for k_sched_lock_nest_cnt
+    tos_sys.o(i.knl_sched) refers to tos_global.o(.data) for k_next_task
+    tos_sys.o(i.knl_sched) refers to tos_global.o(.data) for k_curr_task
+    tos_sys.o(i.tos_knl_init) refers to tos_cpu.o(i.cpu_init) for cpu_init
+    tos_sys.o(i.tos_knl_init) refers to tos_sched.o(i.readyqueue_init) for readyqueue_init
+    tos_sys.o(i.tos_knl_init) refers to tos_mmheap.o(i.mmheap_init_with_pool) for mmheap_init_with_pool
+    tos_sys.o(i.tos_knl_init) refers to tos_sys.o(i.knl_idle_init) for knl_idle_init
+    tos_sys.o(i.tos_knl_init) refers to tos_timer.o(i.timer_init) for timer_init
+    tos_sys.o(i.tos_knl_init) refers to tos_global.o(.bss) for k_mmheap_default_pool
+    tos_sys.o(i.tos_knl_irq_enter) refers to tos_global.o(.data) for k_knl_state
+    tos_sys.o(i.tos_knl_irq_enter) refers to tos_global.o(.data) for k_irq_nest_cnt
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_sched.o(i.readyqueue_highest_ready_task_get) for readyqueue_highest_ready_task_get
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_cpu.o(i.cpu_irq_context_switch) for cpu_irq_context_switch
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_global.o(.data) for k_knl_state
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_global.o(.data) for k_irq_nest_cnt
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_global.o(.data) for k_sched_lock_nest_cnt
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_global.o(.data) for k_next_task
+    tos_sys.o(i.tos_knl_irq_leave) refers to tos_global.o(.data) for k_curr_task
+    tos_sys.o(i.tos_knl_is_running) refers to tos_global.o(.data) for k_knl_state
+    tos_sys.o(i.tos_knl_sched_lock) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sys.o(i.tos_knl_sched_lock) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sys.o(i.tos_knl_sched_lock) refers to tos_global.o(.data) for k_irq_nest_cnt
+    tos_sys.o(i.tos_knl_sched_lock) refers to tos_global.o(.data) for k_knl_state
+    tos_sys.o(i.tos_knl_sched_lock) refers to tos_global.o(.data) for k_sched_lock_nest_cnt
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_global.o(.data) for k_irq_nest_cnt
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_global.o(.data) for k_knl_state
+    tos_sys.o(i.tos_knl_sched_unlock) refers to tos_global.o(.data) for k_sched_lock_nest_cnt
+    tos_sys.o(i.tos_knl_start) refers to tos_sched.o(i.readyqueue_highest_ready_task_get) for readyqueue_highest_ready_task_get
+    tos_sys.o(i.tos_knl_start) refers to tos_cpu.o(i.cpu_sched_start) for cpu_sched_start
+    tos_sys.o(i.tos_knl_start) refers to tos_global.o(.data) for k_knl_state
+    tos_sys.o(i.tos_knl_start) refers to tos_global.o(.data) for k_next_task
+    tos_sys.o(i.tos_knl_start) refers to tos_global.o(.data) for k_curr_task
+    tos_task.o(i.task_default_walker) refers to printf5.o(i.__0printf$5) for __2printf
+    tos_task.o(i.task_do_destroy) refers to tos_sys.o(i.knl_is_idle) for knl_is_idle
+    tos_task.o(i.task_do_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.task_do_destroy) refers to tos_mutex.o(i.mutex_release) for mutex_release
+    tos_task.o(i.task_do_destroy) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_task.o(i.task_do_destroy) refers to tos_tick.o(i.tick_list_remove) for tick_list_remove
+    tos_task.o(i.task_do_destroy) refers to tos_pend.o(i.pend_list_remove) for pend_list_remove
+    tos_task.o(i.task_do_destroy) refers to tos_task.o(i.task_reset) for task_reset
+    tos_task.o(i.task_do_destroy) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.task_do_destroy) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.task_exit) refers to tos_task.o(i.tos_task_destroy) for tos_task_destroy
+    tos_task.o(i.task_free) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_task.o(i.task_free_all) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.task_free_all) refers to tos_task.o(i.task_free) for task_free
+    tos_task.o(i.task_free_all) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.task_free_all) refers to tos_global.o(.data) for k_dead_task_list
+    tos_task.o(i.tos_task_create) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_create) refers to tos_sys.o(i.knl_is_idle) for knl_is_idle
+    tos_task.o(i.tos_task_create) refers to tos_task.o(i.task_reset) for task_reset
+    tos_task.o(i.tos_task_create) refers to tos_cpu.o(i.cpu_task_stk_init) for cpu_task_stk_init
+    tos_task.o(i.tos_task_create) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_create) refers to tos_sched.o(i.readyqueue_add_tail) for readyqueue_add_tail
+    tos_task.o(i.tos_task_create) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_create) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_task.o(i.tos_task_create) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_create) refers to tos_global.o(.data) for k_stat_list
+    tos_task.o(i.tos_task_create) refers to tos_task.o(i.task_exit) for task_exit
+    tos_task.o(i.tos_task_create_dyn) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_alloc) for tos_mmheap_alloc
+    tos_task.o(i.tos_task_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_aligned_alloc) for tos_mmheap_aligned_alloc
+    tos_task.o(i.tos_task_create_dyn) refers to tos_task.o(i.tos_task_create) for tos_task_create
+    tos_task.o(i.tos_task_create_dyn) refers to tos_task.o(i.task_free) for task_free
+    tos_task.o(i.tos_task_create_dyn) refers to tos_mmheap.o(i.tos_mmheap_free) for tos_mmheap_free
+    tos_task.o(i.tos_task_curr_task_get) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_curr_task_get) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_task.o(i.tos_task_curr_task_get) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_curr_task_get) refers to tos_global.o(.data) for k_curr_task
+    tos_task.o(i.tos_task_delay) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_delay) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_task.o(i.tos_task_delay) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_delay) refers to tos_tick.o(i.tick_list_add) for tick_list_add
+    tos_task.o(i.tos_task_delay) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_task.o(i.tos_task_delay) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_delay) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_delay) refers to tos_task.o(i.tos_task_yield) for tos_task_yield
+    tos_task.o(i.tos_task_delay) refers to tos_global.o(.data) for k_curr_task
+    tos_task.o(i.tos_task_delay_abort) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_delay_abort) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_delay_abort) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_task.o(i.tos_task_delay_abort) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_delay_abort) refers to tos_tick.o(i.tick_list_remove) for tick_list_remove
+    tos_task.o(i.tos_task_delay_abort) refers to tos_sched.o(i.readyqueue_add) for readyqueue_add
+    tos_task.o(i.tos_task_delay_abort) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_destroy) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_destroy) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_task.o(i.tos_task_destroy) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_task.o(i.tos_task_destroy) refers to tos_sys.o(i.tos_knl_sched_lock) for tos_knl_sched_lock
+    tos_task.o(i.tos_task_destroy) refers to tos_task.o(i.task_do_destroy) for task_do_destroy
+    tos_task.o(i.tos_task_destroy) refers to tos_sys.o(i.tos_knl_sched_unlock) for tos_knl_sched_unlock
+    tos_task.o(i.tos_task_destroy) refers to tos_task.o(i.task_free) for task_free
+    tos_task.o(i.tos_task_destroy) refers to tos_global.o(.data) for k_dead_task_list
+    tos_task.o(i.tos_task_destroy) refers to tos_global.o(.data) for k_curr_task
+    tos_task.o(i.tos_task_info_display) refers to tos_task.o(i.tos_task_walkthru) for tos_task_walkthru
+    tos_task.o(i.tos_task_info_display) refers to tos_task.o(i.task_default_walker) for task_default_walker
+    tos_task.o(i.tos_task_prio_change) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_prio_change) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_prio_change) refers to tos_pend.o(i.pend_highest_pending_prio_get) for pend_highest_pending_prio_get
+    tos_task.o(i.tos_task_prio_change) refers to tos_pend.o(i.pend_list_adjust) for pend_list_adjust
+    tos_task.o(i.tos_task_prio_change) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_task.o(i.tos_task_prio_change) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_task.o(i.tos_task_prio_change) refers to tos_sched.o(i.readyqueue_add_head) for readyqueue_add_head
+    tos_task.o(i.tos_task_prio_change) refers to tos_sched.o(i.readyqueue_add_tail) for readyqueue_add_tail
+    tos_task.o(i.tos_task_prio_change) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_prio_change) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_resume) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_task.o(i.tos_task_resume) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_resume) refers to tos_sched.o(i.readyqueue_add) for readyqueue_add
+    tos_task.o(i.tos_task_resume) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_resume) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_stack_draught_depth) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_stack_draught_depth) refers to tos_cpu.o(i.cpu_task_stack_draught_depth) for cpu_task_stack_draught_depth
+    tos_task.o(i.tos_task_stack_draught_depth) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_stack_draught_depth) refers to tos_global.o(.data) for k_curr_task
+    tos_task.o(i.tos_task_suspend) refers to tos_sys.o(i.knl_is_idle) for knl_is_idle
+    tos_task.o(i.tos_task_suspend) refers to tos_sys.o(i.knl_is_self) for knl_is_self
+    tos_task.o(i.tos_task_suspend) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_suspend) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_task.o(i.tos_task_suspend) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_suspend) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_suspend) refers to tos_sys.o(i.knl_is_sched_locked) for knl_is_sched_locked
+    tos_task.o(i.tos_task_suspend) refers to tos_global.o(.data) for k_curr_task
+    tos_task.o(i.tos_task_walkthru) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_walkthru) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_walkthru) refers to tos_global.o(.data) for k_stat_list
+    tos_task.o(i.tos_task_yield) refers to tos_sys.o(i.knl_is_inirq) for knl_is_inirq
+    tos_task.o(i.tos_task_yield) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_task.o(i.tos_task_yield) refers to tos_sched.o(i.readyqueue_remove) for readyqueue_remove
+    tos_task.o(i.tos_task_yield) refers to tos_sched.o(i.readyqueue_add_tail) for readyqueue_add_tail
+    tos_task.o(i.tos_task_yield) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_task.o(i.tos_task_yield) refers to tos_sys.o(i.knl_sched) for knl_sched
+    tos_task.o(i.tos_task_yield) refers to tos_global.o(.data) for k_curr_task
+    tos_tick.o(i.tick_list_add) refers to tos_tick.o(i.tick_task_place) for tick_task_place
+    tos_tick.o(i.tick_list_remove) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_tick.o(i.tick_list_remove) refers to tos_tick.o(i.tos_list_empty) for tos_list_empty
+    tos_tick.o(i.tick_list_remove) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_tick.o(i.tick_list_remove) refers to tos_global.o(.data) for k_tick_list
+    tos_tick.o(i.tick_next_expires_get) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_tick.o(i.tick_next_expires_get) refers to tos_tick.o(i.tos_list_empty) for tos_list_empty
+    tos_tick.o(i.tick_next_expires_get) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_tick.o(i.tick_next_expires_get) refers to tos_global.o(.data) for k_tick_list
+    tos_tick.o(i.tick_task_place) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_tick.o(i.tick_task_place) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_tick.o(i.tick_task_place) refers to tos_global.o(.data) for k_tick_list
+    tos_tick.o(i.tick_update) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_tick.o(i.tick_update) refers to tos_pend.o(i.pend_task_wakeup) for pend_task_wakeup
+    tos_tick.o(i.tick_update) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_tick.o(i.tick_update) refers to tos_global.o(.data) for k_tick_count
+    tos_tick.o(i.tick_update) refers to tos_global.o(.data) for k_tick_list
+    tos_tick.o(i.tos_tick_handler) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    tos_tick.o(i.tos_tick_handler) refers to tos_tick.o(i.tick_update) for tick_update
+    tos_tick.o(i.tos_tick_handler) refers to tos_timer.o(i.timer_update) for timer_update
+    tos_time.o(i.tos_millisec2tick) refers to uidiv.o(.text) for __aeabi_uidivmod
+    tos_time.o(i.tos_sleep_hmsm) refers to uidiv.o(.text) for __aeabi_uidivmod
+    tos_time.o(i.tos_sleep_hmsm) refers to tos_task.o(i.tos_task_delay) for tos_task_delay
+    tos_time.o(i.tos_sleep_ms) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    tos_time.o(i.tos_sleep_ms) refers to tos_task.o(i.tos_task_delay) for tos_task_delay
+    tos_time.o(i.tos_systick_get) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_time.o(i.tos_systick_get) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_time.o(i.tos_systick_get) refers to tos_global.o(.data) for k_tick_count
+    tos_time.o(i.tos_systick_set) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_time.o(i.tos_systick_set) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_time.o(i.tos_systick_set) refers to tos_global.o(.data) for k_tick_count
+    tos_time.o(i.tos_tick2millisec) refers to uidiv.o(.text) for __aeabi_uidivmod
+    tos_timer.o(i.timer_next_expires_get) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_timer.o(i.timer_next_expires_get) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_timer.o(i.timer_next_expires_get) refers to tos_global.o(.data) for k_timer_ctl
+    tos_timer.o(i.timer_next_expires_get) refers to tos_global.o(.data) for k_tick_count
+    tos_timer.o(i.timer_place) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_timer.o(i.timer_place) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_timer.o(i.timer_place) refers to tos_global.o(.data) for k_tick_count
+    tos_timer.o(i.timer_place) refers to tos_global.o(.data) for k_timer_ctl
+    tos_timer.o(i.timer_takeoff) refers to tos_cpu.o(i.tos_cpu_cpsr_save) for tos_cpu_cpsr_save
+    tos_timer.o(i.timer_takeoff) refers to tos_cpu.o(i.tos_cpu_cpsr_restore) for tos_cpu_cpsr_restore
+    tos_timer.o(i.timer_takeoff) refers to tos_global.o(.data) for k_timer_ctl
+    tos_timer.o(i.timer_update) refers to tos_sys.o(i.tos_knl_sched_lock) for tos_knl_sched_lock
+    tos_timer.o(i.timer_update) refers to tos_timer.o(i.timer_takeoff) for timer_takeoff
+    tos_timer.o(i.timer_update) refers to tos_sys.o(i.tos_knl_sched_unlock) for tos_knl_sched_unlock
+    tos_timer.o(i.timer_update) refers to tos_timer.o(i.timer_place) for timer_place
+    tos_timer.o(i.timer_update) refers to tos_global.o(.data) for k_timer_ctl
+    tos_timer.o(i.timer_update) refers to tos_global.o(.data) for k_tick_count
+    tos_timer.o(i.tos_timer_delay_change) refers to tos_timer.o(i.timer_change) for timer_change
+    tos_timer.o(i.tos_timer_destroy) refers to tos_timer.o(i.timer_takeoff) for timer_takeoff
+    tos_timer.o(i.tos_timer_period_change) refers to tos_timer.o(i.timer_change) for timer_change
+    tos_timer.o(i.tos_timer_start) refers to tos_timer.o(i.timer_takeoff) for timer_takeoff
+    tos_timer.o(i.tos_timer_start) refers to tos_timer.o(i.timer_place) for timer_place
+    tos_timer.o(i.tos_timer_stop) refers to tos_timer.o(i.timer_takeoff) for timer_takeoff
+    cmsis_os.o(i.osDelay) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    cmsis_os.o(i.osDelay) refers to tos_task.o(i.tos_task_delay) for tos_task_delay
+    cmsis_os.o(i.osDelay) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osKernelInitialize) refers to tos_sys.o(i.tos_knl_init) for tos_knl_init
+    cmsis_os.o(i.osKernelInitialize) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osKernelRunning) refers to tos_sys.o(i.tos_knl_is_running) for tos_knl_is_running
+    cmsis_os.o(i.osKernelStart) refers to tos_sys.o(i.tos_knl_start) for tos_knl_start
+    cmsis_os.o(i.osKernelStart) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osKernelSysTick) refers to tos_time.o(i.tos_systick_get) for tos_systick_get
+    cmsis_os.o(i.osMessageCreate) refers to tos_message_queue.o(i.tos_msg_q_create) for tos_msg_q_create
+    cmsis_os.o(i.osMessageGet) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    cmsis_os.o(i.osMessageGet) refers to tos_message_queue.o(i.tos_msg_q_pend) for tos_msg_q_pend
+    cmsis_os.o(i.osMessageGet) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osMessagePut) refers to tos_message_queue.o(i.tos_msg_q_post) for tos_msg_q_post
+    cmsis_os.o(i.osMessagePut) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osMutexCreate) refers to tos_mutex.o(i.tos_mutex_create) for tos_mutex_create
+    cmsis_os.o(i.osMutexDelete) refers to tos_mutex.o(i.tos_mutex_destroy) for tos_mutex_destroy
+    cmsis_os.o(i.osMutexDelete) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osMutexRelease) refers to tos_mutex.o(i.tos_mutex_post) for tos_mutex_post
+    cmsis_os.o(i.osMutexRelease) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osMutexWait) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    cmsis_os.o(i.osMutexWait) refers to tos_mutex.o(i.tos_mutex_pend_timed) for tos_mutex_pend_timed
+    cmsis_os.o(i.osMutexWait) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osPoolAlloc) refers to tos_mmblk.o(i.tos_mmblk_alloc) for tos_mmblk_alloc
+    cmsis_os.o(i.osPoolCAlloc) refers to tos_mmblk.o(i.tos_mmblk_alloc) for tos_mmblk_alloc
+    cmsis_os.o(i.osPoolCAlloc) refers to memseta.o(.text) for __aeabi_memclr
+    cmsis_os.o(i.osPoolCreate) refers to tos_mmblk.o(i.tos_mmblk_pool_create) for tos_mmblk_pool_create
+    cmsis_os.o(i.osPoolFree) refers to tos_mmblk.o(i.tos_mmblk_free) for tos_mmblk_free
+    cmsis_os.o(i.osPoolFree) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osSemaphoreCreate) refers to tos_sem.o(i.tos_sem_create) for tos_sem_create
+    cmsis_os.o(i.osSemaphoreDelete) refers to tos_sem.o(i.tos_sem_destroy) for tos_sem_destroy
+    cmsis_os.o(i.osSemaphoreDelete) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osSemaphoreRelease) refers to tos_sem.o(i.tos_sem_post) for tos_sem_post
+    cmsis_os.o(i.osSemaphoreRelease) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osSemaphoreWait) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    cmsis_os.o(i.osSemaphoreWait) refers to tos_sem.o(i.tos_sem_pend) for tos_sem_pend
+    cmsis_os.o(i.osThreadCreate) refers to cmsis_os.o(i.priority_cmsis2knl) for priority_cmsis2knl
+    cmsis_os.o(i.osThreadCreate) refers to tos_task.o(i.tos_task_create) for tos_task_create
+    cmsis_os.o(i.osThreadCreate) refers to tos_task.o(i.tos_task_create_dyn) for tos_task_create_dyn
+    cmsis_os.o(i.osThreadGetId) refers to tos_global.o(.data) for k_curr_task
+    cmsis_os.o(i.osThreadSetPriority) refers to cmsis_os.o(i.priority_cmsis2knl) for priority_cmsis2knl
+    cmsis_os.o(i.osThreadSetPriority) refers to tos_task.o(i.tos_task_prio_change) for tos_task_prio_change
+    cmsis_os.o(i.osThreadSetPriority) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osThreadTerminate) refers to tos_task.o(i.tos_task_destroy) for tos_task_destroy
+    cmsis_os.o(i.osThreadTerminate) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osTimerCreate) refers to tos_timer.o(i.tos_timer_create) for tos_timer_create
+    cmsis_os.o(i.osTimerDelete) refers to tos_timer.o(i.tos_timer_destroy) for tos_timer_destroy
+    cmsis_os.o(i.osTimerDelete) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osTimerStart) refers to tos_time.o(i.tos_millisec2tick) for tos_millisec2tick
+    cmsis_os.o(i.osTimerStart) refers to tos_timer.o(i.tos_timer_start) for tos_timer_start
+    cmsis_os.o(i.osTimerStart) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    cmsis_os.o(i.osTimerStop) refers to tos_timer.o(i.tos_timer_stop) for tos_timer_stop
+    cmsis_os.o(i.osTimerStop) refers to cmsis_os.o(i.errno_knl2cmsis) for errno_knl2cmsis
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry8b.o(.ARM.Collect$$$$0000000A) for _main_cpp_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry9a.o(.ARM.Collect$$$$0000000B) for _main_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    uldiv.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+    uldiv.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    printfb.o(i.__0fprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0fprintf$bare) refers to usart.o(i.fputc) for fputc
+    printfb.o(i.__0printf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0printf$bare) refers to usart.o(i.fputc) for fputc
+    printfb.o(i.__0printf$bare) refers to stdout.o(.data) for __stdout
+    printfb.o(i.__0snprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0snprintf$bare) refers to printfb.o(i._snputc) for _snputc
+    printfb.o(i.__0sprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0sprintf$bare) refers to printfb.o(i._sputc) for _sputc
+    printfb.o(i.__0vfprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vfprintf$bare) refers to usart.o(i.fputc) for fputc
+    printfb.o(i.__0vprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vprintf$bare) refers to usart.o(i.fputc) for fputc
+    printfb.o(i.__0vprintf$bare) refers to stdout.o(.data) for __stdout
+    printfb.o(i.__0vsnprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vsnprintf$bare) refers to printfb.o(i._snputc) for _snputc
+    printfb.o(i.__0vsprintf$bare) refers to printfb.o(i._printf_core) for _printf_core
+    printfb.o(i.__0vsprintf$bare) refers to printfb.o(i._sputc) for _sputc
+    printf0.o(i.__0fprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0fprintf$0) refers to usart.o(i.fputc) for fputc
+    printf0.o(i.__0printf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0printf$0) refers to usart.o(i.fputc) for fputc
+    printf0.o(i.__0printf$0) refers to stdout.o(.data) for __stdout
+    printf0.o(i.__0snprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0snprintf$0) refers to printf0.o(i._snputc) for _snputc
+    printf0.o(i.__0sprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0sprintf$0) refers to printf0.o(i._sputc) for _sputc
+    printf0.o(i.__0vfprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vfprintf$0) refers to usart.o(i.fputc) for fputc
+    printf0.o(i.__0vprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vprintf$0) refers to usart.o(i.fputc) for fputc
+    printf0.o(i.__0vprintf$0) refers to stdout.o(.data) for __stdout
+    printf0.o(i.__0vsnprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vsnprintf$0) refers to printf0.o(i._snputc) for _snputc
+    printf0.o(i.__0vsprintf$0) refers to printf0.o(i._printf_core) for _printf_core
+    printf0.o(i.__0vsprintf$0) refers to printf0.o(i._sputc) for _sputc
+    printf1.o(i.__0fprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0fprintf$1) refers to usart.o(i.fputc) for fputc
+    printf1.o(i.__0printf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0printf$1) refers to usart.o(i.fputc) for fputc
+    printf1.o(i.__0printf$1) refers to stdout.o(.data) for __stdout
+    printf1.o(i.__0snprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0snprintf$1) refers to printf1.o(i._snputc) for _snputc
+    printf1.o(i.__0sprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0sprintf$1) refers to printf1.o(i._sputc) for _sputc
+    printf1.o(i.__0vfprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vfprintf$1) refers to usart.o(i.fputc) for fputc
+    printf1.o(i.__0vprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vprintf$1) refers to usart.o(i.fputc) for fputc
+    printf1.o(i.__0vprintf$1) refers to stdout.o(.data) for __stdout
+    printf1.o(i.__0vsnprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vsnprintf$1) refers to printf1.o(i._snputc) for _snputc
+    printf1.o(i.__0vsprintf$1) refers to printf1.o(i._printf_core) for _printf_core
+    printf1.o(i.__0vsprintf$1) refers to printf1.o(i._sputc) for _sputc
+    printf1.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf2.o(i.__0fprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0fprintf$2) refers to usart.o(i.fputc) for fputc
+    printf2.o(i.__0printf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0printf$2) refers to usart.o(i.fputc) for fputc
+    printf2.o(i.__0printf$2) refers to stdout.o(.data) for __stdout
+    printf2.o(i.__0snprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0snprintf$2) refers to printf2.o(i._snputc) for _snputc
+    printf2.o(i.__0sprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0sprintf$2) refers to printf2.o(i._sputc) for _sputc
+    printf2.o(i.__0vfprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vfprintf$2) refers to usart.o(i.fputc) for fputc
+    printf2.o(i.__0vprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vprintf$2) refers to usart.o(i.fputc) for fputc
+    printf2.o(i.__0vprintf$2) refers to stdout.o(.data) for __stdout
+    printf2.o(i.__0vsnprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vsnprintf$2) refers to printf2.o(i._snputc) for _snputc
+    printf2.o(i.__0vsprintf$2) refers to printf2.o(i._printf_core) for _printf_core
+    printf2.o(i.__0vsprintf$2) refers to printf2.o(i._sputc) for _sputc
+    printf3.o(i.__0fprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0fprintf$3) refers to usart.o(i.fputc) for fputc
+    printf3.o(i.__0printf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0printf$3) refers to usart.o(i.fputc) for fputc
+    printf3.o(i.__0printf$3) refers to stdout.o(.data) for __stdout
+    printf3.o(i.__0snprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0snprintf$3) refers to printf3.o(i._snputc) for _snputc
+    printf3.o(i.__0sprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0sprintf$3) refers to printf3.o(i._sputc) for _sputc
+    printf3.o(i.__0vfprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vfprintf$3) refers to usart.o(i.fputc) for fputc
+    printf3.o(i.__0vprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vprintf$3) refers to usart.o(i.fputc) for fputc
+    printf3.o(i.__0vprintf$3) refers to stdout.o(.data) for __stdout
+    printf3.o(i.__0vsnprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vsnprintf$3) refers to printf3.o(i._snputc) for _snputc
+    printf3.o(i.__0vsprintf$3) refers to printf3.o(i._printf_core) for _printf_core
+    printf3.o(i.__0vsprintf$3) refers to printf3.o(i._sputc) for _sputc
+    printf3.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf4.o(i.__0fprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0fprintf$4) refers to usart.o(i.fputc) for fputc
+    printf4.o(i.__0printf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0printf$4) refers to usart.o(i.fputc) for fputc
+    printf4.o(i.__0printf$4) refers to stdout.o(.data) for __stdout
+    printf4.o(i.__0snprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0snprintf$4) refers to printf4.o(i._snputc) for _snputc
+    printf4.o(i.__0sprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0sprintf$4) refers to printf4.o(i._sputc) for _sputc
+    printf4.o(i.__0vfprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vfprintf$4) refers to usart.o(i.fputc) for fputc
+    printf4.o(i.__0vprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vprintf$4) refers to usart.o(i.fputc) for fputc
+    printf4.o(i.__0vprintf$4) refers to stdout.o(.data) for __stdout
+    printf4.o(i.__0vsnprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vsnprintf$4) refers to printf4.o(i._snputc) for _snputc
+    printf4.o(i.__0vsprintf$4) refers to printf4.o(i._printf_core) for _printf_core
+    printf4.o(i.__0vsprintf$4) refers to printf4.o(i._sputc) for _sputc
+    printf4.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf5.o(i.__0fprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0fprintf$5) refers to usart.o(i.fputc) for fputc
+    printf5.o(i.__0printf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0printf$5) refers to usart.o(i.fputc) for fputc
+    printf5.o(i.__0printf$5) refers to stdout.o(.data) for __stdout
+    printf5.o(i.__0snprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0snprintf$5) refers to printf5.o(i._snputc) for _snputc
+    printf5.o(i.__0sprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0sprintf$5) refers to printf5.o(i._sputc) for _sputc
+    printf5.o(i.__0vfprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vfprintf$5) refers to usart.o(i.fputc) for fputc
+    printf5.o(i.__0vprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vprintf$5) refers to usart.o(i.fputc) for fputc
+    printf5.o(i.__0vprintf$5) refers to stdout.o(.data) for __stdout
+    printf5.o(i.__0vsnprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vsnprintf$5) refers to printf5.o(i._snputc) for _snputc
+    printf5.o(i.__0vsprintf$5) refers to printf5.o(i._printf_core) for _printf_core
+    printf5.o(i.__0vsprintf$5) refers to printf5.o(i._sputc) for _sputc
+    printf5.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf6.o(i.__0fprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0fprintf$6) refers to usart.o(i.fputc) for fputc
+    printf6.o(i.__0printf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0printf$6) refers to usart.o(i.fputc) for fputc
+    printf6.o(i.__0printf$6) refers to stdout.o(.data) for __stdout
+    printf6.o(i.__0snprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0snprintf$6) refers to printf6.o(i._snputc) for _snputc
+    printf6.o(i.__0sprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0sprintf$6) refers to printf6.o(i._sputc) for _sputc
+    printf6.o(i.__0vfprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vfprintf$6) refers to usart.o(i.fputc) for fputc
+    printf6.o(i.__0vprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vprintf$6) refers to usart.o(i.fputc) for fputc
+    printf6.o(i.__0vprintf$6) refers to stdout.o(.data) for __stdout
+    printf6.o(i.__0vsnprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vsnprintf$6) refers to printf6.o(i._snputc) for _snputc
+    printf6.o(i.__0vsprintf$6) refers to printf6.o(i._printf_core) for _printf_core
+    printf6.o(i.__0vsprintf$6) refers to printf6.o(i._sputc) for _sputc
+    printf6.o(i._printf_core) refers to printf6.o(i._printf_pre_padding) for _printf_pre_padding
+    printf6.o(i._printf_core) refers to printf6.o(i._printf_post_padding) for _printf_post_padding
+    printf6.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printf7.o(i.__0fprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0fprintf$7) refers to usart.o(i.fputc) for fputc
+    printf7.o(i.__0printf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0printf$7) refers to usart.o(i.fputc) for fputc
+    printf7.o(i.__0printf$7) refers to stdout.o(.data) for __stdout
+    printf7.o(i.__0snprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0snprintf$7) refers to printf7.o(i._snputc) for _snputc
+    printf7.o(i.__0sprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0sprintf$7) refers to printf7.o(i._sputc) for _sputc
+    printf7.o(i.__0vfprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vfprintf$7) refers to usart.o(i.fputc) for fputc
+    printf7.o(i.__0vprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vprintf$7) refers to usart.o(i.fputc) for fputc
+    printf7.o(i.__0vprintf$7) refers to stdout.o(.data) for __stdout
+    printf7.o(i.__0vsnprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vsnprintf$7) refers to printf7.o(i._snputc) for _snputc
+    printf7.o(i.__0vsprintf$7) refers to printf7.o(i._printf_core) for _printf_core
+    printf7.o(i.__0vsprintf$7) refers to printf7.o(i._sputc) for _sputc
+    printf7.o(i._printf_core) refers to printf7.o(i._printf_pre_padding) for _printf_pre_padding
+    printf7.o(i._printf_core) refers to printf7.o(i._printf_post_padding) for _printf_post_padding
+    printf7.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printf8.o(i.__0fprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0fprintf$8) refers to usart.o(i.fputc) for fputc
+    printf8.o(i.__0printf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0printf$8) refers to usart.o(i.fputc) for fputc
+    printf8.o(i.__0printf$8) refers to stdout.o(.data) for __stdout
+    printf8.o(i.__0snprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0snprintf$8) refers to printf8.o(i._snputc) for _snputc
+    printf8.o(i.__0sprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0sprintf$8) refers to printf8.o(i._sputc) for _sputc
+    printf8.o(i.__0vfprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vfprintf$8) refers to usart.o(i.fputc) for fputc
+    printf8.o(i.__0vprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vprintf$8) refers to usart.o(i.fputc) for fputc
+    printf8.o(i.__0vprintf$8) refers to stdout.o(.data) for __stdout
+    printf8.o(i.__0vsnprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vsnprintf$8) refers to printf8.o(i._snputc) for _snputc
+    printf8.o(i.__0vsprintf$8) refers to printf8.o(i._printf_core) for _printf_core
+    printf8.o(i.__0vsprintf$8) refers to printf8.o(i._sputc) for _sputc
+    printf8.o(i._printf_core) refers to printf8.o(i._printf_pre_padding) for _printf_pre_padding
+    printf8.o(i._printf_core) refers to printf8.o(i._printf_post_padding) for _printf_post_padding
+    printf8.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printfa.o(i.__0fprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0fprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0fprintf) refers to usart.o(i.fputc) for fputc
+    printfa.o(i.__0printf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0printf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0printf) refers to usart.o(i.fputc) for fputc
+    printfa.o(i.__0printf) refers to stdout.o(.data) for __stdout
+    printfa.o(i.__0snprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0snprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0snprintf) refers to printfa.o(i._snputc) for _snputc
+    printfa.o(i.__0sprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0sprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0sprintf) refers to printfa.o(i._sputc) for _sputc
+    printfa.o(i.__0vfprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vfprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vfprintf) refers to usart.o(i.fputc) for fputc
+    printfa.o(i.__0vprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vprintf) refers to usart.o(i.fputc) for fputc
+    printfa.o(i.__0vprintf) refers to stdout.o(.data) for __stdout
+    printfa.o(i.__0vsnprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vsnprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vsnprintf) refers to printfa.o(i._snputc) for _snputc
+    printfa.o(i.__0vsprintf) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i.__0vsprintf) refers to printfa.o(i._printf_core) for _printf_core
+    printfa.o(i.__0vsprintf) refers to printfa.o(i._sputc) for _sputc
+    printfa.o(i._fp_digits) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._fp_digits) refers to dmul.o(.text) for __aeabi_dmul
+    printfa.o(i._fp_digits) refers to ddiv.o(.text) for __aeabi_ddiv
+    printfa.o(i._fp_digits) refers to cdrcmple.o(.text) for __aeabi_cdrcmple
+    printfa.o(i._fp_digits) refers to dadd.o(.text) for __aeabi_dadd
+    printfa.o(i._fp_digits) refers to dfixul.o(.text) for __aeabi_d2ulz
+    printfa.o(i._fp_digits) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printfa.o(i._printf_core) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._printf_core) refers to printfa.o(i._printf_pre_padding) for _printf_pre_padding
+    printfa.o(i._printf_core) refers to uldiv.o(.text) for __aeabi_uldivmod
+    printfa.o(i._printf_core) refers to printfa.o(i._printf_post_padding) for _printf_post_padding
+    printfa.o(i._printf_core) refers to printfa.o(i._fp_digits) for _fp_digits
+    printfa.o(i._printf_core) refers to uidiv.o(.text) for __aeabi_uidivmod
+    printfa.o(i._printf_post_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._printf_pre_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._snputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    printfa.o(i._sputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
+    entry2.o(.ARM.Collect$$$$00002712) refers to startup_stm32l051xx.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to startup_stm32l051xx.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
+    entry9a.o(.ARM.Collect$$$$0000000B) refers to main.o(i.main) for main
+    entry9b.o(.ARM.Collect$$$$0000000C) refers to main.o(i.main) for main
+    dadd.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    dadd.o(.text) refers to llsshr.o(.text) for __aeabi_lasr
+    dadd.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    dmul.o(.text) refers to depilogue.o(.text) for _double_epilogue
+    ddiv.o(.text) refers to depilogue.o(.text) for _double_round
+    dfixul.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+    dfixul.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+    depilogue.o(.text) refers to depilogue.o(i.__ARM_clz) for __ARM_clz
+    depilogue.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    depilogue.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing startup_stm32l051xx.o(HEAP), (512 bytes).
+    Removing main.o(.rev16_text), (4 bytes).
+    Removing main.o(.revsh_text), (4 bytes).
+    Removing gpio.o(.rev16_text), (4 bytes).
+    Removing gpio.o(.revsh_text), (4 bytes).
+    Removing usart.o(.rev16_text), (4 bytes).
+    Removing usart.o(.revsh_text), (4 bytes).
+    Removing usart.o(i.HAL_UART_MspDeInit), (44 bytes).
+    Removing stm32l0xx_it.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_it.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_msp.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_msp.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_tim.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_tim.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_tim_ex.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_tim_ex.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_uart.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_uart.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_HalfDuplex_EnableReceiver), (54 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_HalfDuplex_EnableTransmitter), (54 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_HalfDuplex_Init), (116 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_LIN_Init), (146 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_LIN_SendBreak), (44 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_MultiProcessor_DisableMuteMode), (46 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_MultiProcessor_EnableMuteMode), (46 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_MultiProcessor_EnterMuteMode), (12 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_MultiProcessor_Init), (142 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_Abort), (162 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_AbortCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_AbortReceive), (110 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_AbortReceiveCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_AbortReceive_IT), (124 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_AbortTransmit), (82 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_AbortTransmitCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_AbortTransmit_IT), (88 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_Abort_IT), (204 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_DMAPause), (94 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_DMAResume), (86 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_DMAStop), (122 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_DeInit), (58 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_ErrorCallback), (2 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_GetError), (4 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_GetState), (10 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_IRQHandler), (316 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_MspDeInit), (2 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_MspInit), (2 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_Receive), (260 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_Receive_DMA), (184 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_Receive_IT), (196 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_RxCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_RxHalfCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_Transmit_DMA), (172 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_Transmit_IT), (120 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_TxCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_uart.o(i.HAL_UART_TxHalfCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_DMAAbortOnError), (20 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_DMAError), (72 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_DMAReceiveCplt), (62 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_DMARxAbortCallback), (60 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_DMARxHalfCplt), (10 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_DMARxOnlyAbortCallback), (36 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_DMATransmitCplt), (48 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_DMATxAbortCallback), (50 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_DMATxHalfCplt), (10 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_DMATxOnlyAbortCallback), (20 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_EndRxTransfer), (32 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_EndTxTransfer), (16 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_RxISR_16BIT), (88 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_RxISR_8BIT), (88 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_TxISR_16BIT), (64 bytes).
+    Removing stm32l0xx_hal_uart.o(i.UART_TxISR_8BIT), (60 bytes).
+    Removing stm32l0xx_hal_uart_ex.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_uart_ex.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_uart_ex.o(i.HAL_MultiProcessorEx_AddressLength_Set), (52 bytes).
+    Removing stm32l0xx_hal_uart_ex.o(i.HAL_RS485Ex_Init), (136 bytes).
+    Removing stm32l0xx_hal_uart_ex.o(i.HAL_UARTEx_DisableClockStopMode), (36 bytes).
+    Removing stm32l0xx_hal_uart_ex.o(i.HAL_UARTEx_DisableStopMode), (34 bytes).
+    Removing stm32l0xx_hal_uart_ex.o(i.HAL_UARTEx_EnableClockStopMode), (36 bytes).
+    Removing stm32l0xx_hal_uart_ex.o(i.HAL_UARTEx_EnableStopMode), (34 bytes).
+    Removing stm32l0xx_hal_uart_ex.o(i.HAL_UARTEx_StopModeWakeUpSourceConfig), (152 bytes).
+    Removing stm32l0xx_hal_uart_ex.o(i.HAL_UARTEx_WakeupCallback), (2 bytes).
+    Removing stm32l0xx_hal.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_DBGMCU_DBG_DisableLowPowerConfig), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_DBGMCU_DBG_EnableLowPowerConfig), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_DBGMCU_DisableDBGSleepMode), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_DBGMCU_DisableDBGStandbyMode), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_DBGMCU_DisableDBGStopMode), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_DBGMCU_EnableDBGSleepMode), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_DBGMCU_EnableDBGStandbyMode), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_DBGMCU_EnableDBGStopMode), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_DeInit), (40 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_Delay), (28 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_GetDEVID), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_GetHalVersion), (8 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_GetREVID), (12 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_GetUIDw0), (12 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_GetUIDw1), (12 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_GetUIDw2), (12 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_MspDeInit), (2 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_MspInit), (2 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_ResumeTick), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_SYSCFG_Disable_Lock_VREFINT), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_SYSCFG_Enable_Lock_VREFINT), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_SYSCFG_GetBootMode), (16 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_SYSCFG_VREFINT_OutputSelect), (24 bytes).
+    Removing stm32l0xx_hal.o(i.HAL_SuspendTick), (16 bytes).
+    Removing stm32l0xx_hal_i2c.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_i2c.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_AbortCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_AddrCallback), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_DeInit), (52 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_DisableListen_IT), (48 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_ER_IRQHandler), (94 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_EV_IRQHandler), (16 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_EnableListen_IT), (40 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_ErrorCallback), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_GetError), (4 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_GetMode), (6 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_GetState), (6 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Init), (180 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_IsDeviceReady), (288 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_ListenCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_MasterRxCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_MasterTxCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Abort_IT), (92 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive), (272 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_DMA), (280 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Receive_IT), (128 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_DMA), (316 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Receive_IT), (156 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_DMA), (312 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Seq_Transmit_IT), (156 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit), (272 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_DMA), (284 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Master_Transmit_IT), (128 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_MemRxCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_MemTxCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read), (340 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_DMA), (288 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Read_IT), (188 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write), (332 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_DMA), (280 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Mem_Write_IT), (180 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_MspDeInit), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_MspInit), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_SlaveRxCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_SlaveTxCpltCallback), (2 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive), (276 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive_DMA), (200 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Receive_IT), (88 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_DMA), (360 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Receive_IT), (200 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_DMA), (364 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Seq_Transmit_IT), (204 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit), (294 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit_DMA), (196 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.HAL_I2C_Slave_Transmit_IT), (88 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_ConvertOtherXferOptions), (28 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_DMAAbort), (40 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_DMAError), (24 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_DMAMasterReceiveCplt), (80 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_DMAMasterTransmitCplt), (80 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_DMASlaveReceiveCplt), (42 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_DMASlaveTransmitCplt), (36 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_Disable_IRQ), (84 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_Enable_IRQ), (100 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_Flush_TXDR), (34 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_ITAddrCplt), (122 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_ITError), (208 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_ITListenCplt), (100 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_ITMasterCplt), (164 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_ITMasterSeqCplt), (70 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_ITSlaveCplt), (244 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_ITSlaveSeqCplt), (74 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_IsAcknowledgeFailed), (112 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_DMA), (268 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_Master_ISR_IT), (304 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryRead), (96 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_RequestMemoryWrite), (96 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_DMA), (232 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_Slave_ISR_IT), (298 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_TransferConfig), (40 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_WaitOnFlagUntilTimeout), (78 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_WaitOnRXNEFlagUntilTimeout), (128 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_WaitOnSTOPFlagUntilTimeout), (76 bytes).
+    Removing stm32l0xx_hal_i2c.o(i.I2C_WaitOnTXISFlagUntilTimeout), (80 bytes).
+    Removing stm32l0xx_hal_i2c_ex.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_i2c_ex.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_i2c_ex.o(i.HAL_I2CEx_ConfigAnalogFilter), (74 bytes).
+    Removing stm32l0xx_hal_i2c_ex.o(i.HAL_I2CEx_ConfigDigitalFilter), (72 bytes).
+    Removing stm32l0xx_hal_i2c_ex.o(i.HAL_I2CEx_DisableFastModePlus), (28 bytes).
+    Removing stm32l0xx_hal_i2c_ex.o(i.HAL_I2CEx_DisableWakeUp), (66 bytes).
+    Removing stm32l0xx_hal_i2c_ex.o(i.HAL_I2CEx_EnableFastModePlus), (28 bytes).
+    Removing stm32l0xx_hal_i2c_ex.o(i.HAL_I2CEx_EnableWakeUp), (66 bytes).
+    Removing stm32l0xx_hal_rcc.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_rcc.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_rcc.o(i.HAL_RCC_CSSCallback), (2 bytes).
+    Removing stm32l0xx_hal_rcc.o(i.HAL_RCC_DeInit), (204 bytes).
+    Removing stm32l0xx_hal_rcc.o(i.HAL_RCC_EnableCSS), (20 bytes).
+    Removing stm32l0xx_hal_rcc.o(i.HAL_RCC_GetClockConfig), (64 bytes).
+    Removing stm32l0xx_hal_rcc.o(i.HAL_RCC_GetHCLKFreq), (12 bytes).
+    Removing stm32l0xx_hal_rcc.o(i.HAL_RCC_GetOscConfig), (184 bytes).
+    Removing stm32l0xx_hal_rcc.o(i.HAL_RCC_MCOConfig), (96 bytes).
+    Removing stm32l0xx_hal_rcc.o(i.HAL_RCC_NMI_IRQHandler), (24 bytes).
+    Removing stm32l0xx_hal_rcc_ex.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_rcc_ex.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_DisableLSECSS), (32 bytes).
+    Removing stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_EnableLSECSS), (20 bytes).
+    Removing stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_EnableLSECSS_IT), (52 bytes).
+    Removing stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPeriphCLKConfig), (92 bytes).
+    Removing stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_GetPeriphCLKFreq), (324 bytes).
+    Removing stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_LSECSS_Callback), (2 bytes).
+    Removing stm32l0xx_hal_rcc_ex.o(i.HAL_RCCEx_LSECSS_IRQHandler), (24 bytes).
+    Removing stm32l0xx_hal_flash_ramfunc.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_flash_ramfunc.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_flash_ramfunc.o(i.FLASHRAM_SetErrorCode), (144 bytes).
+    Removing stm32l0xx_hal_flash_ramfunc.o(i.FLASHRAM_WaitForLastOperation), (96 bytes).
+    Removing stm32l0xx_hal_flash_ramfunc.o(i.HAL_FLASHEx_DisableRunPowerDown), (36 bytes).
+    Removing stm32l0xx_hal_flash_ramfunc.o(i.HAL_FLASHEx_EnableRunPowerDown), (36 bytes).
+    Removing stm32l0xx_hal_flash_ramfunc.o(i.HAL_FLASHEx_GetError), (16 bytes).
+    Removing stm32l0xx_hal_flash_ramfunc.o(i.HAL_FLASHEx_HalfPageProgram), (84 bytes).
+    Removing stm32l0xx_hal_flash.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_flash.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_flash.o(i.FLASH_SetErrorCode), (144 bytes).
+    Removing stm32l0xx_hal_flash.o(i.FLASH_WaitForLastOperation), (112 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_EndOfOperationCallback), (2 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_GetError), (12 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_IRQHandler), (220 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_Lock), (28 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_OB_Launch), (32 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_OB_Lock), (20 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_OB_Unlock), (68 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_OperationErrorCallback), (2 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_Program), (60 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_Program_IT), (60 bytes).
+    Removing stm32l0xx_hal_flash.o(i.HAL_FLASH_Unlock), (92 bytes).
+    Removing stm32l0xx_hal_flash.o(.bss), (24 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.FLASH_OB_ProtectedSectorsConfig), (80 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.FLASH_PageErase), (44 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_AdvOBGetConfig), (24 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_AdvOBProgram), (24 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_DATAEEPROM_DisableFixedTimeProgram), (16 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_DATAEEPROM_EnableFixedTimeProgram), (16 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_DATAEEPROM_Erase), (40 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_DATAEEPROM_Lock), (20 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_DATAEEPROM_Program), (84 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_DATAEEPROM_Unlock), (52 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_Erase), (120 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_Erase_IT), (92 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OBGetConfig), (56 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OBProgram), (292 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OB_DeSelectPCROP), (52 bytes).
+    Removing stm32l0xx_hal_flash_ex.o(i.HAL_FLASHEx_OB_SelectPCROP), (56 bytes).
+    Removing stm32l0xx_hal_gpio.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_gpio.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_gpio.o(i.HAL_GPIO_DeInit), (228 bytes).
+    Removing stm32l0xx_hal_gpio.o(i.HAL_GPIO_EXTI_Callback), (2 bytes).
+    Removing stm32l0xx_hal_gpio.o(i.HAL_GPIO_EXTI_IRQHandler), (24 bytes).
+    Removing stm32l0xx_hal_gpio.o(i.HAL_GPIO_LockPin), (36 bytes).
+    Removing stm32l0xx_hal_gpio.o(i.HAL_GPIO_ReadPin), (10 bytes).
+    Removing stm32l0xx_hal_gpio.o(i.HAL_GPIO_TogglePin), (8 bytes).
+    Removing stm32l0xx_hal_dma.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_dma.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_dma.o(i.DMA_SetConfig), (44 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_Abort), (68 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_Abort_IT), (76 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_DeInit), (104 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_GetError), (4 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_GetState), (6 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_IRQHandler), (168 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_Init), (144 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_PollForTransfer), (190 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_RegisterCallback), (72 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_Start), (74 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_Start_IT), (104 bytes).
+    Removing stm32l0xx_hal_dma.o(i.HAL_DMA_UnRegisterCallback), (78 bytes).
+    Removing stm32l0xx_hal_pwr.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_pwr.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_ConfigPVD), (104 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_DeInit), (24 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_DisableBkUpAccess), (16 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_DisablePVD), (16 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_DisableSEVOnPend), (16 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_DisableSleepOnExit), (16 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_DisableWakeUpPin), (16 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_EnableBkUpAccess), (16 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_EnablePVD), (16 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_EnableSEVOnPend), (16 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_EnableSleepOnExit), (16 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_EnableWakeUpPin), (16 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_EnterSLEEPMode), (48 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_EnterSTANDBYMode), (32 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_EnterSTOPMode), (52 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_PVDCallback), (2 bytes).
+    Removing stm32l0xx_hal_pwr.o(i.HAL_PWR_PVD_IRQHandler), (28 bytes).
+    Removing stm32l0xx_hal_pwr_ex.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_pwr_ex.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_pwr_ex.o(i.HAL_PWREx_DisableFastWakeUp), (16 bytes).
+    Removing stm32l0xx_hal_pwr_ex.o(i.HAL_PWREx_DisableLowPowerRunMode), (76 bytes).
+    Removing stm32l0xx_hal_pwr_ex.o(i.HAL_PWREx_DisableUltraLowPower), (16 bytes).
+    Removing stm32l0xx_hal_pwr_ex.o(i.HAL_PWREx_EnableFastWakeUp), (16 bytes).
+    Removing stm32l0xx_hal_pwr_ex.o(i.HAL_PWREx_EnableLowPowerRunMode), (24 bytes).
+    Removing stm32l0xx_hal_pwr_ex.o(i.HAL_PWREx_EnableUltraLowPower), (16 bytes).
+    Removing stm32l0xx_hal_pwr_ex.o(i.HAL_PWREx_GetVoltageRange), (16 bytes).
+    Removing stm32l0xx_hal_cortex.o(.rev16_text), (4 bytes).
+    Removing stm32l0xx_hal_cortex.o(.revsh_text), (4 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_MPU_ConfigRegion), (80 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_MPU_Disable), (16 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_MPU_Enable), (24 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_NVIC_ClearPendingIRQ), (20 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_NVIC_DisableIRQ), (20 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_NVIC_EnableIRQ), (20 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_NVIC_GetPendingIRQ), (28 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_NVIC_GetPriority), (52 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_NVIC_SetPendingIRQ), (20 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_NVIC_SystemReset), (28 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_CLKSourceConfig), (24 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_Callback), (2 bytes).
+    Removing stm32l0xx_hal_cortex.o(i.HAL_SYSTICK_IRQHandler), (8 bytes).
+    Removing system_stm32l0xx.o(.rev16_text), (4 bytes).
+    Removing system_stm32l0xx.o(.revsh_text), (4 bytes).
+    Removing system_stm32l0xx.o(i.SystemCoreClockUpdate), (156 bytes).
+    Removing tos_cpu.o(.rev16_text), (4 bytes).
+    Removing tos_cpu.o(.revsh_text), (4 bytes).
+    Removing tos_cpu.o(i.cpu_reset), (8 bytes).
+    Removing tos_cpu.o(i.cpu_task_stack_draught_depth), (48 bytes).
+    Removing tos_cpu.o(i.tos_cpu_int_disable), (8 bytes).
+    Removing tos_cpu.o(i.tos_cpu_int_enable), (8 bytes).
+    Removing port_c.o(.rev16_text), (4 bytes).
+    Removing port_c.o(.revsh_text), (4 bytes).
+    Removing port_c.o(i.port_cpu_reset), (28 bytes).
+    Removing tos_binary_heap.o(.rev16_text), (4 bytes).
+    Removing tos_binary_heap.o(.revsh_text), (4 bytes).
+    Removing tos_binary_heap.o(i.bin_heap_do_percolate_up), (108 bytes).
+    Removing tos_binary_heap.o(i.bin_heap_percolate_down), (128 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_create), (52 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_create_dyn), (68 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_destroy), (64 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_destroy_dyn), (68 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_flush), (48 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_is_empty), (48 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_is_full), (48 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_pop), (108 bytes).
+    Removing tos_binary_heap.o(i.tos_bin_heap_push), (112 bytes).
+    Removing tos_char_fifo.o(.rev16_text), (4 bytes).
+    Removing tos_char_fifo.o(.revsh_text), (4 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_create), (48 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_create_dyn), (44 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_destroy), (60 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_destroy_dyn), (60 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_flush), (40 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_is_empty), (32 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_is_full), (32 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_pop), (44 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_pop_stream), (80 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_push), (44 bytes).
+    Removing tos_char_fifo.o(i.tos_chr_fifo_push_stream), (68 bytes).
+    Removing tos_completion.o(.rev16_text), (4 bytes).
+    Removing tos_completion.o(.revsh_text), (4 bytes).
+    Removing tos_completion.o(i.completion_do_post), (108 bytes).
+    Removing tos_completion.o(i.tos_completion_create), (36 bytes).
+    Removing tos_completion.o(i.tos_completion_destroy), (80 bytes).
+    Removing tos_completion.o(i.tos_completion_is_done), (48 bytes).
+    Removing tos_completion.o(i.tos_completion_pend), (12 bytes).
+    Removing tos_completion.o(i.tos_completion_pend_timed), (152 bytes).
+    Removing tos_completion.o(i.tos_completion_post), (10 bytes).
+    Removing tos_completion.o(i.tos_completion_post_all), (10 bytes).
+    Removing tos_completion.o(i.tos_completion_reset), (48 bytes).
+    Removing tos_countdownlatch.o(.rev16_text), (4 bytes).
+    Removing tos_countdownlatch.o(.revsh_text), (4 bytes).
+    Removing tos_countdownlatch.o(i.tos_countdownlatch_create), (36 bytes).
+    Removing tos_countdownlatch.o(i.tos_countdownlatch_destroy), (80 bytes).
+    Removing tos_countdownlatch.o(i.tos_countdownlatch_pend), (12 bytes).
+    Removing tos_countdownlatch.o(i.tos_countdownlatch_pend_timed), (152 bytes).
+    Removing tos_countdownlatch.o(i.tos_countdownlatch_post), (96 bytes).
+    Removing tos_countdownlatch.o(i.tos_countdownlatch_reset), (48 bytes).
+    Removing tos_event.o(.rev16_text), (4 bytes).
+    Removing tos_event.o(.revsh_text), (4 bytes).
+    Removing tos_event.o(i.event_do_post), (128 bytes).
+    Removing tos_event.o(i.event_is_match), (34 bytes).
+    Removing tos_event.o(i.tos_event_create), (36 bytes).
+    Removing tos_event.o(i.tos_event_destroy), (84 bytes).
+    Removing tos_event.o(i.tos_event_pend), (216 bytes).
+    Removing tos_event.o(i.tos_event_post), (10 bytes).
+    Removing tos_event.o(i.tos_event_post_keep), (10 bytes).
+    Removing tos_global.o(.rev16_text), (4 bytes).
+    Removing tos_global.o(.revsh_text), (4 bytes).
+    Removing tos_mail_queue.o(.rev16_text), (4 bytes).
+    Removing tos_mail_queue.o(.revsh_text), (4 bytes).
+    Removing tos_mail_queue.o(i.mail_q_do_post), (148 bytes).
+    Removing tos_mail_queue.o(i.mail_task_recv), (24 bytes).
+    Removing tos_mail_queue.o(i.tos_mail_q_create), (48 bytes).
+    Removing tos_mail_queue.o(i.tos_mail_q_create_dyn), (48 bytes).
+    Removing tos_mail_queue.o(i.tos_mail_q_destroy), (116 bytes).
+    Removing tos_mail_queue.o(i.tos_mail_q_destroy_dyn), (116 bytes).
+    Removing tos_mail_queue.o(i.tos_mail_q_flush), (40 bytes).
+    Removing tos_mail_queue.o(i.tos_mail_q_pend), (176 bytes).
+    Removing tos_mail_queue.o(i.tos_mail_q_post), (10 bytes).
+    Removing tos_mail_queue.o(i.tos_mail_q_post_all), (10 bytes).
+    Removing tos_message_queue.o(.rev16_text), (4 bytes).
+    Removing tos_message_queue.o(.revsh_text), (4 bytes).
+    Removing tos_message_queue.o(i.msg_q_do_post), (136 bytes).
+    Removing tos_message_queue.o(i.msg_q_task_recv), (12 bytes).
+    Removing tos_message_queue.o(i.tos_msg_q_create), (56 bytes).
+    Removing tos_message_queue.o(i.tos_msg_q_create_dyn), (52 bytes).
+    Removing tos_message_queue.o(i.tos_msg_q_destroy), (116 bytes).
+    Removing tos_message_queue.o(i.tos_msg_q_destroy_dyn), (116 bytes).
+    Removing tos_message_queue.o(i.tos_msg_q_flush), (40 bytes).
+    Removing tos_message_queue.o(i.tos_msg_q_pend), (164 bytes).
+    Removing tos_message_queue.o(i.tos_msg_q_post), (10 bytes).
+    Removing tos_message_queue.o(i.tos_msg_q_post_all), (10 bytes).
+    Removing tos_mmblk.o(.rev16_text), (4 bytes).
+    Removing tos_mmblk.o(.revsh_text), (4 bytes).
+    Removing tos_mmblk.o(i.tos_mmblk_alloc), (84 bytes).
+    Removing tos_mmblk.o(i.tos_mmblk_free), (80 bytes).
+    Removing tos_mmblk.o(i.tos_mmblk_pool_create), (108 bytes).
+    Removing tos_mmblk.o(i.tos_mmblk_pool_destroy), (48 bytes).
+    Removing tos_mmheap.o(.rev16_text), (4 bytes).
+    Removing tos_mmheap.o(.revsh_text), (4 bytes).
+    Removing tos_mmheap.o(i.__ffs), (16 bytes).
+    Removing tos_mmheap.o(i.adjust_request_size), (32 bytes).
+    Removing tos_mmheap.o(i.blk_can_split), (20 bytes).
+    Removing tos_mmheap.o(i.blk_locate_free), (140 bytes).
+    Removing tos_mmheap.o(i.blk_mark_as_used), (26 bytes).
+    Removing tos_mmheap.o(i.blk_prepare_used), (62 bytes).
+    Removing tos_mmheap.o(i.blk_split), (50 bytes).
+    Removing tos_mmheap.o(i.mmheap_init), (10 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_aligned_alloc), (136 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_alloc), (26 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_calloc), (26 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_check), (76 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_pool_check), (76 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_pool_rmv), (120 bytes).
+    Removing tos_mmheap.o(i.tos_mmheap_realloc), (186 bytes).
+    Removing tos_mutex.o(.rev16_text), (4 bytes).
+    Removing tos_mutex.o(.revsh_text), (4 bytes).
+    Removing tos_mutex.o(i.mutex_fresh_owner_mark), (26 bytes).
+    Removing tos_mutex.o(i.tos_mutex_create), (68 bytes).
+    Removing tos_mutex.o(i.tos_mutex_destroy), (108 bytes).
+    Removing tos_mutex.o(i.tos_mutex_pend), (12 bytes).
+    Removing tos_mutex.o(i.tos_mutex_pend_timed), (216 bytes).
+    Removing tos_mutex.o(i.tos_mutex_post), (184 bytes).
+    Removing tos_pend.o(.rev16_text), (4 bytes).
+    Removing tos_pend.o(.revsh_text), (4 bytes).
+    Removing tos_pend.o(i.pend_highest_pending_task_get), (6 bytes).
+    Removing tos_pend.o(i.pend_is_nopending), (14 bytes).
+    Removing tos_pend.o(i.pend_object_deinit), (6 bytes).
+    Removing tos_pend.o(i.pend_object_init), (6 bytes).
+    Removing tos_pend.o(i.pend_state2errno), (48 bytes).
+    Removing tos_pend.o(i.pend_task_block), (40 bytes).
+    Removing tos_pend.o(i.pend_wakeup), (18 bytes).
+    Removing tos_pend.o(i.pend_wakeup_one), (12 bytes).
+    Removing tos_priority_mail_queue.o(.rev16_text), (4 bytes).
+    Removing tos_priority_mail_queue.o(.revsh_text), (4 bytes).
+    Removing tos_priority_mail_queue.o(i.prio_mail_q_do_post), (156 bytes).
+    Removing tos_priority_mail_queue.o(i.prio_mail_task_recv), (24 bytes).
+    Removing tos_priority_mail_queue.o(i.tos_prio_mail_q_create), (96 bytes).
+    Removing tos_priority_mail_queue.o(i.tos_prio_mail_q_create_dyn), (48 bytes).
+    Removing tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy), (124 bytes).
+    Removing tos_priority_mail_queue.o(i.tos_prio_mail_q_destroy_dyn), (116 bytes).
+    Removing tos_priority_mail_queue.o(i.tos_prio_mail_q_flush), (40 bytes).
+    Removing tos_priority_mail_queue.o(i.tos_prio_mail_q_pend), (180 bytes).
+    Removing tos_priority_mail_queue.o(i.tos_prio_mail_q_post), (12 bytes).
+    Removing tos_priority_mail_queue.o(i.tos_prio_mail_q_post_all), (12 bytes).
+    Removing tos_priority_message_queue.o(.rev16_text), (4 bytes).
+    Removing tos_priority_message_queue.o(.revsh_text), (4 bytes).
+    Removing tos_priority_message_queue.o(i.prio_msg_q_do_post), (144 bytes).
+    Removing tos_priority_message_queue.o(i.prio_msg_q_task_recv), (12 bytes).
+    Removing tos_priority_message_queue.o(i.tos_prio_msg_q_create), (96 bytes).
+    Removing tos_priority_message_queue.o(i.tos_prio_msg_q_create_dyn), (52 bytes).
+    Removing tos_priority_message_queue.o(i.tos_prio_msg_q_destroy), (124 bytes).
+    Removing tos_priority_message_queue.o(i.tos_prio_msg_q_destroy_dyn), (124 bytes).
+    Removing tos_priority_message_queue.o(i.tos_prio_msg_q_flush), (40 bytes).
+    Removing tos_priority_message_queue.o(i.tos_prio_msg_q_pend), (168 bytes).
+    Removing tos_priority_message_queue.o(i.tos_prio_msg_q_post), (10 bytes).
+    Removing tos_priority_message_queue.o(i.tos_prio_msg_q_post_all), (10 bytes).
+    Removing tos_priority_queue.o(.rev16_text), (4 bytes).
+    Removing tos_priority_queue.o(.revsh_text), (4 bytes).
+    Removing tos_priority_queue.o(i.prio_q_mgr_entry_cmp), (16 bytes).
+    Removing tos_priority_queue.o(i.prio_q_prio_mgr_deinit), (12 bytes).
+    Removing tos_priority_queue.o(i.prio_q_prio_mgr_slot_dequeue), (104 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_create), (116 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_create_dyn), (104 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_dequeue), (124 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_destroy), (76 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_destroy_dyn), (88 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_enqueue), (264 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_flush), (96 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_is_empty), (48 bytes).
+    Removing tos_priority_queue.o(i.tos_prio_q_is_full), (48 bytes).
+    Removing tos_priority_queue.o(.constdata), (77 bytes).
+    Removing tos_ring_queue.o(.rev16_text), (4 bytes).
+    Removing tos_ring_queue.o(.revsh_text), (4 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_create), (48 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_create_dyn), (68 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_dequeue), (124 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_destroy), (64 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_destroy_dyn), (72 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_enqueue), (124 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_flush), (56 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_is_empty), (48 bytes).
+    Removing tos_ring_queue.o(i.tos_ring_q_is_full), (48 bytes).
+    Removing tos_robin.o(.rev16_text), (4 bytes).
+    Removing tos_robin.o(.revsh_text), (4 bytes).
+    Removing tos_sched.o(.rev16_text), (4 bytes).
+    Removing tos_sched.o(.revsh_text), (4 bytes).
+    Removing tos_sched.o(i.readyqueue_first_task_get), (24 bytes).
+    Removing tos_sched.o(i.readyqueue_is_prio_onlyone), (28 bytes).
+    Removing tos_sched.o(i.readyqueue_move_head_to_tail), (36 bytes).
+    Removing tos_sem.o(.rev16_text), (4 bytes).
+    Removing tos_sem.o(.revsh_text), (4 bytes).
+    Removing tos_sem.o(i.sem_do_post), (108 bytes).
+    Removing tos_sem.o(i.tos_sem_create), (16 bytes).
+    Removing tos_sem.o(i.tos_sem_create_max), (36 bytes).
+    Removing tos_sem.o(i.tos_sem_destroy), (80 bytes).
+    Removing tos_sem.o(i.tos_sem_pend), (156 bytes).
+    Removing tos_sem.o(i.tos_sem_post), (10 bytes).
+    Removing tos_sem.o(i.tos_sem_post_all), (10 bytes).
+    Removing tos_sys.o(.rev16_text), (4 bytes).
+    Removing tos_sys.o(.revsh_text), (4 bytes).
+    Removing tos_task.o(.rev16_text), (4 bytes).
+    Removing tos_task.o(.revsh_text), (4 bytes).
+    Removing tos_task.o(i.task_default_walker), (344 bytes).
+    Removing tos_task.o(i.tos_task_create_dyn), (152 bytes).
+    Removing tos_task.o(i.tos_task_curr_task_get), (36 bytes).
+    Removing tos_task.o(i.tos_task_delay), (92 bytes).
+    Removing tos_task.o(i.tos_task_delay_abort), (128 bytes).
+    Removing tos_task.o(i.tos_task_info_display), (16 bytes).
+    Removing tos_task.o(i.tos_task_resume), (92 bytes).
+    Removing tos_task.o(i.tos_task_stack_draught_depth), (76 bytes).
+    Removing tos_task.o(i.tos_task_suspend), (120 bytes).
+    Removing tos_task.o(i.tos_task_walkthru), (48 bytes).
+    Removing tos_task.o(i.tos_task_yield), (48 bytes).
+    Removing tos_tick.o(.rev16_text), (4 bytes).
+    Removing tos_tick.o(.revsh_text), (4 bytes).
+    Removing tos_tick.o(i.tick_list_add), (18 bytes).
+    Removing tos_tick.o(i.tick_next_expires_get), (48 bytes).
+    Removing tos_tick.o(i.tick_task_place), (100 bytes).
+    Removing tos_time.o(.rev16_text), (4 bytes).
+    Removing tos_time.o(.revsh_text), (4 bytes).
+    Removing tos_time.o(i.tos_sleep_hmsm), (48 bytes).
+    Removing tos_time.o(i.tos_sleep_ms), (12 bytes).
+    Removing tos_time.o(i.tos_systick_set), (24 bytes).
+    Removing tos_timer.o(.rev16_text), (4 bytes).
+    Removing tos_timer.o(.revsh_text), (4 bytes).
+    Removing tos_timer.o(i.timer_change), (116 bytes).
+    Removing tos_timer.o(i.timer_next_expires_get), (56 bytes).
+    Removing tos_timer.o(i.tos_timer_create), (120 bytes).
+    Removing tos_timer.o(i.tos_timer_delay_change), (10 bytes).
+    Removing tos_timer.o(i.tos_timer_destroy), (92 bytes).
+    Removing tos_timer.o(i.tos_timer_period_change), (10 bytes).
+    Removing tos_timer.o(i.tos_timer_start), (104 bytes).
+    Removing tos_timer.o(i.tos_timer_stop), (84 bytes).
+    Removing tos_pm.o(.rev16_text), (4 bytes).
+    Removing tos_pm.o(.revsh_text), (4 bytes).
+    Removing tos_tickless.o(.rev16_text), (4 bytes).
+    Removing tos_tickless.o(.revsh_text), (4 bytes).
+    Removing cmsis_os.o(.rev16_text), (4 bytes).
+    Removing cmsis_os.o(.revsh_text), (4 bytes).
+    Removing cmsis_os.o(i.errno_knl2cmsis), (8 bytes).
+    Removing cmsis_os.o(i.osDelay), (26 bytes).
+    Removing cmsis_os.o(i.osKernelInitialize), (12 bytes).
+    Removing cmsis_os.o(i.osKernelRunning), (8 bytes).
+    Removing cmsis_os.o(i.osKernelStart), (12 bytes).
+    Removing cmsis_os.o(i.osKernelSysTick), (8 bytes).
+    Removing cmsis_os.o(i.osMessageCreate), (28 bytes).
+    Removing cmsis_os.o(i.osMessageGet), (60 bytes).
+    Removing cmsis_os.o(i.osMessagePut), (14 bytes).
+    Removing cmsis_os.o(i.osMutexCreate), (24 bytes).
+    Removing cmsis_os.o(i.osMutexDelete), (12 bytes).
+    Removing cmsis_os.o(i.osMutexRelease), (12 bytes).
+    Removing cmsis_os.o(i.osMutexWait), (34 bytes).
+    Removing cmsis_os.o(i.osPoolAlloc), (24 bytes).
+    Removing cmsis_os.o(i.osPoolCAlloc), (36 bytes).
+    Removing cmsis_os.o(i.osPoolCreate), (30 bytes).
+    Removing cmsis_os.o(i.osPoolFree), (12 bytes).
+    Removing cmsis_os.o(i.osSemaphoreCreate), (26 bytes).
+    Removing cmsis_os.o(i.osSemaphoreDelete), (12 bytes).
+    Removing cmsis_os.o(i.osSemaphoreRelease), (12 bytes).
+    Removing cmsis_os.o(i.osSemaphoreWait), (44 bytes).
+    Removing cmsis_os.o(i.osThreadCreate), (100 bytes).
+    Removing cmsis_os.o(i.osThreadGetId), (12 bytes).
+    Removing cmsis_os.o(i.osThreadGetPriority), (16 bytes).
+    Removing cmsis_os.o(i.osThreadSetPriority), (24 bytes).
+    Removing cmsis_os.o(i.osThreadTerminate), (12 bytes).
+    Removing cmsis_os.o(i.osTimerCreate), (48 bytes).
+    Removing cmsis_os.o(i.osTimerDelete), (12 bytes).
+    Removing cmsis_os.o(i.osTimerStart), (50 bytes).
+    Removing cmsis_os.o(i.osTimerStop), (12 bytes).
+    Removing cmsis_os.o(i.priority_cmsis2knl), (16 bytes).
+    Removing dadd.o(.text), (356 bytes).
+    Removing dmul.o(.text), (208 bytes).
+    Removing ddiv.o(.text), (240 bytes).
+    Removing dfixul.o(.text), (64 bytes).
+    Removing cdrcmple.o(.text), (40 bytes).
+    Removing depilogue.o(.text), (190 bytes).
+    Removing depilogue.o(i.__ARM_clz), (46 bytes).
+
+600 unused section(s) (total 36713 bytes) removed from the image.
